@@ -12,7 +12,7 @@ See: .planning/PROJECT.md (updated 2026-02-15)
 Phase: 2 of 6 (Normalization & Component Mining)
 Plan: 4 of 6 in current phase
 Status: In Progress
-Last activity: 2026-02-15 — Completed 02-05: Variant Detection & State Mapping
+Last activity: 2026-02-15 — Completed 02-03: DTCG Output & Normalization Pipeline
 
 Progress: [███████░░░] 67% (4/6 Phase 2 plans)
 
@@ -28,7 +28,7 @@ Progress: [███████░░░] 67% (4/6 Phase 2 plans)
 | Phase | Plans | Total     | Avg/Plan |
 |-------|-------|-----------|----------|
 | 1     | 7     | 51.9 min  | 7.4 min  |
-| 2     | 4     | 20.8 min  | 5.2 min  |
+| 2     | 4     | 26.8 min  | 6.7 min  |
 
 **Recent Executions:**
 
@@ -40,9 +40,10 @@ Progress: [███████░░░] 67% (4/6 Phase 2 plans)
 | 02-01    | 4 min    | 2     | 8     |
 | 02-02    | 8.8 min  | 2     | 6     |
 | 02-05    | 4 min    | 2     | 6     |
+| 02-03    | 6 min    | 2     | 6     |
 
 **Recent Trend:**
-- Last 5 plans: 02-04 (4 min), 02-01 (4 min), 02-02 (8.8 min), 02-05 (4 min)
+- Last 5 plans: 02-01 (4 min), 02-02 (8.8 min), 02-05 (4 min), 02-03 (6 min)
 - Trend: Phase 2 consistently fast (4-9 min range)
 
 *Updated after each plan completion*
@@ -101,6 +102,10 @@ Recent decisions affecting current work:
 - **02-05:** Loading/error states detected opportunistically from aria attributes and CSS classes
 - **02-05:** State mapping returns only properties that differ from default to minimize data
 - **02-05:** State capture limited to 20 components per type to balance coverage with execution time
+- **02-03:** Use custom zod schema instead of w3c-design-tokens-standard-schema (package incompatible with our needs)
+- **02-03:** Store confidence metadata in $extensions['com.uiux-mirror'] per W3C DTCG spec
+- **02-03:** Semantic naming for tokens (heading-1, spacing-xs) more meaningful than pure numeric
+- **02-03:** DTCG validation warns instead of fails for robust pipeline operation
 
 ### Pending Todos
 
@@ -113,9 +118,9 @@ None - Phase 2 is progressing smoothly.
 ## Session Continuity
 
 Last session: 2026-02-15
-Stopped at: Completed 02-05: Variant Detection & State Mapping
+Stopped at: Completed 02-03: DTCG Output & Normalization Pipeline
 Resume file: None
 
 ---
 *State initialized: 2026-02-15*
-*Last updated: 2026-02-15T23:01:00Z*
+*Last updated: 2026-02-15T12:02:46Z*
