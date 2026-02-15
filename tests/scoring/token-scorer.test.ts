@@ -141,6 +141,6 @@ describe('calculateTokenConfidence', () => {
     // Raw confidence = 2/20 = 0.1
     // Density bonus capped at 0.2
     // Max possible = 0.1 + 0.2 = 0.3
-    expect(score.value).toBeLessThanOrEqual(0.3);
+    expect(score.value).toBeCloseTo(0.3, 2); // Use toBeCloseTo to handle floating point precision
   });
 });

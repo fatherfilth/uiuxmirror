@@ -134,7 +134,7 @@ describe('detectSpacingScale', () => {
     const scale = detectSpacingScale(values);
 
     expect(scale.baseUnit).toBe(1);
-    expect(scale.coverage).toBeLessThan(1.0); // Poor coverage
+    expect(scale.coverage).toBe(0); // baseUnit 1 indicates no meaningful scale, coverage reported as 0
   });
 
   test('empty array returns baseUnit 1, empty scale', () => {
@@ -148,12 +148,12 @@ describe('detectSpacingScale', () => {
   });
 
   test('coverage calculation is correct for partial match', () => {
-    // 4, 8, 12 are multiples of 4, but 10 is not
+    // GCD of [4, 8, 10, 12] is 2, and all values are multiples of 2
     const values = [4, 8, 10, 12];
 
     const scale = detectSpacingScale(values);
 
     expect(scale.baseUnit).toBe(2); // GCD of 4, 8, 10, 12
-    expect(scale.coverage).toBeCloseTo(0.75, 1); // 3/4 = 75%
+    expect(scale.coverage).toBe(1.0); // All values are multiples of 2 (4/4 = 100%)
   });
 });

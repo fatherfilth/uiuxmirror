@@ -37,7 +37,7 @@ function calculateCoverage(values: number[], baseUnit: number): number {
 
 /**
  * Detects spacing scale from an array of spacing values.
- * Uses GCD to find base unit, then validates with common bases if GCD is 1.
+ * Uses GCD to find base unit, then tries common bases for better coverage.
  *
  * @param spacingValues - Array of spacing values (in pixels)
  * @returns SpacingScale with baseUnit, scale array, and coverage
@@ -66,37 +66,55 @@ export function detectSpacingScale(spacingValues: number[]): SpacingScale {
   }
 
   // Calculate GCD of all values
-  let baseUnit = values[0];
+  let gcdValue = values[0];
   for (let i = 1; i < values.length; i++) {
-    baseUnit = gcd(baseUnit, values[i]);
+    gcdValue = gcd(gcdValue, values[i]);
   }
 
-  // If GCD is 1 and we have multiple values, try common bases
-  if (baseUnit === 1 && values.length > 3) {
-    const commonBases = [4, 8, 6, 10];
-    let bestBase = 1;
-    let bestCoverage = 0;
+  // Try to find meaningful base unit from common design scales
+  // Prefer common bases (4, 8, 6, 10) over mathematical GCD if they have good coverage
+  const commonBases = [4, 8, 6, 10];
+  const candidateBases = [...commonBases, gcdValue];
 
-    for (const base of commonBases) {
-      const coverage = calculateCoverage(values, base);
-      if (coverage > bestCoverage) {
-        bestCoverage = coverage;
-        bestBase = base;
-      }
-    }
+  let bestBase = 1;
+  let bestCoverage = 0;
 
-    // Only use common base if coverage is good enough (>50%)
-    if (bestCoverage >= 0.5) {
-      baseUnit = bestBase;
+  for (const base of candidateBases) {
+    if (base < 1) continue;
+
+    const coverage = calculateCoverage(values, base);
+
+    // Prefer bases with better coverage, ties go to larger base (more meaningful scale)
+    if (coverage > bestCoverage || (coverage === bestCoverage && base > bestBase)) {
+      bestCoverage = coverage;
+      bestBase = base;
     }
   }
+
+  // If no base has reasonable coverage and GCD is useful, use it
+  if (bestCoverage < 0.5 && gcdValue > 1) {
+    bestBase = gcdValue;
+    bestCoverage = calculateCoverage(values, gcdValue);
+  }
+
+  // If still no good base found, default to 1
+  if (bestBase < 1) {
+    bestBase = 1;
+  }
+
+  const baseUnit = bestBase;
 
   // Generate scale (unique multiples of baseUnit, sorted)
   const uniqueValues = Array.from(new Set(values)).sort((a, b) => a - b);
   const scale = uniqueValues.filter(v => v % baseUnit === 0);
 
   // Calculate final coverage
-  const coverage = calculateCoverage(values, baseUnit);
+  // Special case: if baseUnit is 1, it means no meaningful scale was found
+  // Report coverage as 0 to indicate poor scale detection
+  let coverage = calculateCoverage(values, baseUnit);
+  if (baseUnit === 1) {
+    coverage = 0;
+  }
 
   return {
     baseUnit,
