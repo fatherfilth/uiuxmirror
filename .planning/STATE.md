@@ -10,24 +10,24 @@ See: .planning/PROJECT.md (updated 2026-02-15)
 ## Current Position
 
 Phase: 1 of 6 (Foundation & Crawling Infrastructure)
-Plan: 4 of 7 in current phase
+Plan: 5 of 7 in current phase
 Status: Executing Phase 1
-Last activity: 2026-02-15 — Completed 01-04: Token Extractors (Color, Typography, Spacing, Custom Properties)
+Last activity: 2026-02-15 — Completed 01-05: Remaining Token Extractors (Radii, Shadows, Z-Index, Motion, Icons, Imagery)
 
-Progress: [████░░░░░░] 57% (4/7 Phase 1 plans)
+Progress: [█████░░░░░] 71% (5/7 Phase 1 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
+- Total plans completed: 5
 - Average duration: 5.6 minutes
-- Total execution time: 0.37 hours
+- Total execution time: 0.47 hours
 
 **By Phase:**
 
 | Phase | Plans | Total     | Avg/Plan |
 |-------|-------|-----------|----------|
-| 1     | 4     | 21.8 min  | 5.5 min  |
+| 1     | 5     | 27.6 min  | 5.5 min  |
 
 **Recent Executions:**
 
@@ -37,10 +37,11 @@ Progress: [████░░░░░░] 57% (4/7 Phase 1 plans)
 | 01-02    | 7 min    | 3     | 6     |
 | 01-03    | 6.4 min  | 2     | 3     |
 | 01-04    | 3.4 min  | 3     | 6     |
+| 01-05    | 5.8 min  | 3     | 7     |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (5 min), 01-02 (7 min), 01-03 (6.4 min), 01-04 (3.4 min)
-- Trend: Accelerating - latest plan completed in 3.4 minutes
+- Last 5 plans: 01-01 (5 min), 01-02 (7 min), 01-03 (6.4 min), 01-04 (3.4 min), 01-05 (5.8 min)
+- Trend: Steady - maintaining consistent velocity around 5.5 min/plan average
 
 *Updated after each plan completion*
 
@@ -64,6 +65,11 @@ Recent decisions affecting current work:
 - **01-04:** Limit getAllVisibleElements to 500 elements to prevent memory issues on complex pages
 - **01-04:** ColorToken category set to 'unknown' for v1; semantic grouping deferred to Phase 2 cross-page analysis
 - **01-04:** detectBaseUnit uses 80% threshold with [4, 8, 6, 10]px candidates for spacing base unit detection
+- **01-05:** Z-index stacking context uses simplified heuristic (selector depth ≤2 = global, >2 = local) for v1
+- **01-05:** Warning logged if >20 unique z-index values detected (indicates z-index management issue)
+- **01-05:** Icon detection uses dual heuristics (src pattern + size <64px) to identify icons
+- **01-05:** Imagery aspect ratios normalized to common formats with 5% tolerance
+- **01-05:** extractAllTokens runs all extractors concurrently via Promise.all (safe, all read-only)
 
 ### Pending Todos
 
@@ -76,9 +82,9 @@ None - all planned features in Phase 1 are on track.
 ## Session Continuity
 
 Last session: 2026-02-15
-Stopped at: Completed 01-04: Token Extractors (Color, Typography, Spacing, Custom Properties)
+Stopped at: Completed 01-05: Remaining Token Extractors (Radii, Shadows, Z-Index, Motion, Icons, Imagery)
 Resume file: None
 
 ---
 *State initialized: 2026-02-15*
-*Last updated: 2026-02-15T10:05:35Z*
+*Last updated: 2026-02-15T10:14:27Z*
