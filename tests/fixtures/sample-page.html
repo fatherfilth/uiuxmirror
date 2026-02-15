@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Fixture Page</title>
+  <style>
+    :root {
+      --primary-color: #3b82f6;
+      --text-color: #1f2937;
+      --spacing-md: 16px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      color: var(--text-color);
+      background-color: #ffffff;
+      padding: 24px;
+    }
+
+    .header {
+      font-size: 32px;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+
+    .subheader {
+      font-size: 24px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 16px;
+    }
+
+    .paragraph {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #4b5563;
+      margin-bottom: 16px;
+    }
+
+    .small-text {
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    .card {
+      background-color: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .button {
+      background-color: #3b82f6;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 16px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      display: inline-block;
+    }
+
+    .button:hover {
+      background-color: #2563eb;
+    }
+
+    .button-success {
+      background-color: #10b981;
+      padding: 8px 16px;
+      border-radius: 4px;
+    }
+
+    .button-danger {
+      background-color: #ef4444;
+      padding: 8px 16px;
+      border-radius: 4px;
+    }
+
+    .icon-container {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+    }
+
+    .image-container img {
+      width: 640px;
+      height: 480px;
+      object-fit: cover;
+    }
+
+    .spaced-content {
+      padding: 8px;
+      margin: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="header">Test Fixture Page</h1>
+
+  <div class="card">
+    <h2 class="subheader">Card Title</h2>
+    <p class="paragraph">This is a paragraph of text inside a card component. It demonstrates typography and spacing tokens.</p>
+    <p class="small-text">Small descriptive text with reduced size</p>
+  </div>
+
+  <div class="spaced-content">
+    <button class="button">Primary Button</button>
+    <button class="button button-success">Success Button</button>
+    <button class="button button-danger">Danger Button</button>
+  </div>
+
+  <div class="icon-container">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+    </svg>
+  </div>
+
+  <div class="image-container">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='480'%3E%3Crect fill='%23cccccc' width='640' height='480'/%3E%3C/svg%3E" alt="Test image">
+  </div>
+</body>
+</html>
