@@ -10,3 +10,13 @@ export {
   type TokenCategory,
   type TokenMap,
 } from './constraint-checker.js';
+
+export {
+  synthesizeStructure,
+  resolveColorContrast,
+} from './rule-engine.js';
+
+export {
+  compileTemplate,
+  getAvailableTemplates,
+} from './template-registry.js';
