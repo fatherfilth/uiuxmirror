@@ -31,10 +31,16 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Extracted tokens (colors, typography, spacing, radii, shadows, z-index, motion, icons, imagery) match computed styles from browser
   4. Every extracted observation links to evidence (page URL, DOM selector, timestamp, screenshot crop)
   5. User can re-crawl a site and see diff of what changed since last crawl
-**Plans**: TBD
+**Plans:** 7 plans
 
 Plans:
-- [ ] TBD during planning
+- [ ] 01-01-PLAN.md — Project scaffolding, TypeScript types, and shared utilities
+- [ ] 01-02-PLAN.md — Playwright crawler with Crawlee, stealth, robots.txt, and wait strategies
+- [ ] 01-03-PLAN.md — Evidence store and screenshot management
+- [ ] 01-04-PLAN.md — Token extractors: colors, typography, spacing, CSS custom properties
+- [ ] 01-05-PLAN.md — Token extractors: radii, shadows, z-index, motion, icons, imagery
+- [ ] 01-06-PLAN.md — Pipeline orchestration, token persistence, and re-crawl diff tracking
+- [ ] 01-07-PLAN.md — Tests and human verification of output quality
 
 ### Phase 2: Normalization & Component Mining
 **Goal**: Raw observations are transformed into canonical design tokens and component patterns are identified
@@ -117,7 +123,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Crawling Infrastructure | 0/TBD | Not started | - |
+| 1. Foundation & Crawling Infrastructure | 0/7 | Planned | - |
 | 2. Normalization & Component Mining | 0/TBD | Not started | - |
 | 3. Synthesis & Inference Engine | 0/TBD | Not started | - |
 | 4. Pattern Detection & Content Analysis | 0/TBD | Not started | - |
