@@ -38,7 +38,7 @@ export class RobotsValidator {
       const parsed = new URL(url);
       return `${parsed.protocol}//${parsed.host}`;
     } catch (error) {
-      logger.error(`Invalid URL: ${url}`, error);
+      logger.error(`Invalid URL: ${url}`, { error: error instanceof Error ? error.message : String(error) });
       throw new Error(`Invalid URL: ${url}`);
     }
   }
@@ -73,7 +73,7 @@ export class RobotsValidator {
       const text = await response.text();
       return robotsParser(robotsUrl, text);
     } catch (error) {
-      logger.error(`Network error fetching robots.txt from ${robotsUrl}`, error);
+      logger.error(`Network error fetching robots.txt from ${robotsUrl}`, { error: error instanceof Error ? error.message : String(error) });
 
       if (this.strictMode) {
         // In strict mode, block all URLs for this domain on network error
@@ -124,7 +124,7 @@ export class RobotsValidator {
 
       return allowed ?? true; // Default to allowed if parser returns null/undefined
     } catch (error) {
-      logger.error(`Error checking robots.txt for ${url}`, error);
+      logger.error(`Error checking robots.txt for ${url}`, { error: error instanceof Error ? error.message : String(error) });
       // On error checking, use strict mode setting
       return !this.strictMode;
     }
@@ -147,7 +147,7 @@ export class RobotsValidator {
 
       return delay ?? null;
     } catch (error) {
-      logger.error(`Error getting crawl delay for ${domain}`, error);
+      logger.error(`Error getting crawl delay for ${domain}`, { error: error instanceof Error ? error.message : String(error) });
       return null;
     }
   }
