@@ -37,3 +37,18 @@ export type {
   CrawlSnapshot,
   DiffResult,
 } from './crawl-config.js';
+
+// Synthesis types
+export type {
+  DesignDNA,
+  ComponentRequest,
+  EvidenceLink,
+  SynthesisDecision,
+  ComponentState,
+  KeyboardGuidance,
+  FocusGuidance,
+  AriaGuidance,
+  A11yBaseline,
+  SynthesizedComponent,
+  TokenConstraintResult,
+} from './synthesis.js';
