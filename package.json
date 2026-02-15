@@ -35,6 +35,7 @@
     "playwright-extra": "^4.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
     "robots-parser": "^3.0.1",
+    "w3c-design-tokens-standard-schema": "^0.0.7",
     "zod": "^3.23.8"
   },
   "devDependencies": {
