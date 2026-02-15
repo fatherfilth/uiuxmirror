@@ -64,6 +64,7 @@ export function createCrawler(
     // Rate limiting and concurrency
     maxConcurrency: config.maxConcurrency,
     maxRequestsPerMinute: config.maxRequestsPerMinute,
+    maxRequestsPerCrawl: config.maxPages,
 
     // Retry and timeout settings
     maxRequestRetries: 3,
