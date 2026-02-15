@@ -24,3 +24,9 @@ export * from './storage/index.js';
 // Export orchestrator
 export { runPipeline } from './orchestrator.js';
 export type { PipelineOptions, PipelineResult } from './orchestrator.js';
+
+// Phase 2: Normalization and Component Mining
+export * from './normalization/index.js';
+export * from './components/index.js';
+export * from './scoring/index.js';
+export * from './output/index.js';

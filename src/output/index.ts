@@ -16,7 +16,6 @@ export {
 export type {
   DTCGToken,
   DTCGTokenFile,
-  NormalizationResult,
 } from './dtcg-formatter.js';
 
 export {
