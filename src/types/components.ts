@@ -42,3 +42,24 @@ export interface ComponentInstance extends DetectedComponent {
   variants?: Record<string, string>;
   states?: Record<string, Record<string, string>>;
 }
+
+// Component variant definition
+export interface ComponentVariant {
+  size?: 'small' | 'medium' | 'large';
+  emphasis?: 'primary' | 'secondary' | 'tertiary' | 'ghost';
+  shape?: 'rounded' | 'pill' | 'square';
+  evidence: TokenEvidence[];
+}
+
+// Variant dimension distribution
+export interface VariantDimension {
+  name: string;
+  values: string[];
+  distribution: Record<string, number>;
+}
+
+// Analyzed component with variant information
+export interface AnalyzedComponent extends DetectedComponent {
+  variant: ComponentVariant;
+  variantDimensions: VariantDimension[];
+}
