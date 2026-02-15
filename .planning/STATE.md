@@ -12,7 +12,7 @@ See: .planning/PROJECT.md (updated 2026-02-15)
 Phase: 3 of 6 (Synthesis & Inference Engine)
 Plan: 4 of 6 in current phase
 Status: In Progress
-Last activity: 2026-02-16 — Completed 03-04 (state & accessibility generator)
+Last activity: 2026-02-16 — Completed 03-02 (rule engine & templates)
 
 Progress: [███████░░░] 67% (4/6 Phase 3 plans)
 
@@ -38,7 +38,7 @@ Progress: [███████░░░] 67% (4/6 Phase 3 plans)
 | 02-03    | 6 min    | 2     | 6     |
 | 02-06    | 8 min    | 2     | 8     |
 | 03-01    | 4 min    | 2     | 5     |
-| 03-02    | 4 min    | 2     | 4     |
+| 03-02    | 5 min    | 2     | 10    |
 | 03-03    | 4 min    | 2     | 3     |
 | 03-04    | 4 min    | 2     | 3     |
 
@@ -119,6 +119,11 @@ Recent decisions affecting current work:
 - **03-04:** Use DTCG formatted tokens for semantic color lookup (ColorCluster lacks semantic categories)
 - **03-04:** Inline ARIA pattern database (6 patterns ~150 lines, avoids file I/O overhead)
 - **03-04:** Component type aliases for naming variations (table→data-table, dialog→modal)
+- **03-02:** Template aliases for common variations (table→data-table, dialog→modal) improve UX
+- **03-02:** Token coverage threshold of 50% required for synthesis (prevents low-quality output)
+- **03-02:** Handlebars custom helpers (fallback, ifEqual, cssValue) for readable templates
+- **03-02:** WCAG 2.1 luminance calculation for color contrast (industry standard)
+- **03-02:** Template context merges tokens and request constraints for flexibility
 
 ### Pending Todos
 
@@ -131,7 +136,7 @@ None - Phase 3 progressing well, 4 of 6 plans complete.
 ## Session Continuity
 
 Last session: 2026-02-16
-Stopped at: Completed 03-04-PLAN.md (state & accessibility generator)
+Stopped at: Completed 03-02-PLAN.md (rule engine & templates)
 Resume file: None
 
 ---
