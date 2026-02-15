@@ -20,3 +20,18 @@ export {
   compileTemplate,
   getAvailableTemplates,
 } from './template-registry.js';
+
+export {
+  llmRefine,
+  llmDecideMotionTiming,
+  llmDecideEdgeStates,
+} from './llm-refiner.js';
+
+export {
+  buildSystemPrompt,
+  buildMotionPrompt,
+  buildEdgeStatePrompt,
+  buildMicrocopyPrompt,
+  formatTokensForPrompt,
+  formatComponentsForPrompt,
+} from './prompt-builder.js';

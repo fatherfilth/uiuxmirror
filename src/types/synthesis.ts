@@ -127,3 +127,75 @@ export interface TokenConstraintResult {
   missing: string[];                // properties with no matching token
   confidence: number;               // 0-1 based on coverage
 }
+
+/**
+ * StructuralSynthesis - Output of rule-based template synthesis
+ * Stage 1 of the two-stage synthesis pipeline
+ */
+export interface StructuralSynthesis {
+  html: string;                     // Generated HTML structure
+  css: string;                      // Generated CSS styles
+  templateName: string;             // Template used
+  tokenMap: Record<string, string>; // All resolved token values used
+  decisions: SynthesisDecision[];   // Structural decisions made
+  evidence: EvidenceLink[];         // Evidence chain for token usage
+  confidence: number;               // 0-1 based on token coverage
+}
+
+/**
+ * Motion timing decision from LLM
+ */
+export interface MotionTiming {
+  transitions: Array<{
+    property: string;
+    duration: string;
+    timingFunction: string;
+    reasoning: string;
+    confidence: number;
+    evidenceIds: string[];
+  }>;
+}
+
+/**
+ * Edge state decision from LLM (loading/error states)
+ */
+export interface EdgeStates {
+  loadingState: {
+    presentation: 'spinner' | 'skeleton' | 'text-change' | 'progress-bar';
+    styles: Record<string, string>;
+    ariaAttributes: Record<string, string>;
+    reasoning: string;
+    confidence: number;
+  };
+  errorState: {
+    presentation: 'inline-message' | 'toast' | 'banner' | 'icon';
+    styles: Record<string, string>;
+    ariaAttributes: Record<string, string>;
+    reasoning: string;
+    confidence: number;
+  };
+}
+
+/**
+ * Microcopy decision from LLM
+ */
+export interface Microcopy {
+  labels: Record<string, string>;
+  placeholders: Record<string, string>;
+  buttonText?: string;
+  errorMessages?: Record<string, string>;
+  reasoning: string;
+  confidence: number;
+}
+
+/**
+ * LLMRefinement - Output of LLM-based refinement
+ * Stage 2 of the two-stage synthesis pipeline
+ */
+export interface LLMRefinement {
+  motionTimings: MotionTiming | null;
+  edgeStates: EdgeStates | null;
+  microcopy: Microcopy | null;
+  decisions: SynthesisDecision[];
+  evidence: EvidenceLink[];
+}
