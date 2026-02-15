@@ -5,7 +5,7 @@
 
 import { Page } from 'playwright';
 import { createHash } from 'node:crypto';
-import { ensureDirSync } from 'fs-extra';
+import fs from 'fs-extra';
 import { join } from 'node:path';
 import { createLogger } from '../shared/logger.js';
 
@@ -23,7 +23,7 @@ export class ScreenshotManager {
 
   constructor(outputDir: string) {
     this.outputDir = outputDir;
-    ensureDirSync(outputDir);
+    fs.ensureDirSync(outputDir);
     logger.info(`ScreenshotManager initialized with outputDir: ${outputDir}`);
   }
 
