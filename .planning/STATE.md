@@ -10,40 +10,40 @@ See: .planning/PROJECT.md (updated 2026-02-15)
 ## Current Position
 
 Phase: 2 of 6 (Normalization & Component Mining)
-Plan: 3 of 6 in current phase
+Plan: 4 of 6 in current phase
 Status: In Progress
-Last activity: 2026-02-15 — Completed 02-02: Cross-Page Validation & Confidence Scoring
+Last activity: 2026-02-15 — Completed 02-05: Variant Detection & State Mapping
 
-Progress: [█████░░░░░] 50% (3/6 Phase 2 plans)
+Progress: [███████░░░] 67% (4/6 Phase 2 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 10
-- Average duration: 6.6 minutes
-- Total execution time: 1.1 hours
+- Total plans completed: 11
+- Average duration: 6.4 minutes
+- Total execution time: 1.2 hours
 
 **By Phase:**
 
 | Phase | Plans | Total     | Avg/Plan |
 |-------|-------|-----------|----------|
 | 1     | 7     | 51.9 min  | 7.4 min  |
-| 2     | 3     | 16.8 min  | 5.6 min  |
+| 2     | 4     | 20.8 min  | 5.2 min  |
 
 **Recent Executions:**
 
 | Plan     | Duration | Tasks | Files |
 |----------|----------|-------|-------|
-| 01-05    | 5.8 min  | 3     | 7     |
 | 01-06    | 8.3 min  | 3     | 6     |
 | 01-07    | 16 min   | 2     | 9     |
 | 02-04    | 4 min    | 2     | 10    |
 | 02-01    | 4 min    | 2     | 8     |
 | 02-02    | 8.8 min  | 2     | 6     |
+| 02-05    | 4 min    | 2     | 6     |
 
 **Recent Trend:**
-- Last 5 plans: 01-07 (16 min), 02-04 (4 min), 02-01 (4 min), 02-02 (8.8 min)
-- Trend: Variable - Phase 2 plans range from 4-9 min depending on complexity
+- Last 5 plans: 02-04 (4 min), 02-01 (4 min), 02-02 (8.8 min), 02-05 (4 min)
+- Trend: Phase 2 consistently fast (4-9 min range)
 
 *Updated after each plan completion*
 
@@ -95,6 +95,12 @@ Recent decisions affecting current work:
 - **02-02:** Confidence levels: low <0.3, medium 0.3-0.6, high >0.6 for filtering/prioritization
 - **02-02:** Spacing scale tries common bases [4,8,6,10] before GCD for design-meaningful scales
 - **02-02:** baseUnit=1 reports coverage=0 to distinguish mathematical from design-meaningful scales
+- **02-05:** Size variants use percentile-based clustering (33rd/66th percentiles) instead of fixed thresholds
+- **02-05:** Emphasis detection via bg/border heuristics (primary/secondary/tertiary/ghost)
+- **02-05:** Hover/focus states captured via Playwright interaction with transition waits (150ms/100ms)
+- **02-05:** Loading/error states detected opportunistically from aria attributes and CSS classes
+- **02-05:** State mapping returns only properties that differ from default to minimize data
+- **02-05:** State capture limited to 20 components per type to balance coverage with execution time
 
 ### Pending Todos
 
@@ -107,9 +113,9 @@ None - Phase 2 is progressing smoothly.
 ## Session Continuity
 
 Last session: 2026-02-15
-Stopped at: Completed 02-02: Cross-Page Validation & Confidence Scoring
+Stopped at: Completed 02-05: Variant Detection & State Mapping
 Resume file: None
 
 ---
 *State initialized: 2026-02-15*
-*Last updated: 2026-02-15T22:53:00Z*
+*Last updated: 2026-02-15T23:01:00Z*
