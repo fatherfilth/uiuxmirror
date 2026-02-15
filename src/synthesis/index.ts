@@ -35,3 +35,35 @@ export {
   formatTokensForPrompt,
   formatComponentsForPrompt,
 } from './prompt-builder.js';
+
+export {
+  generateAllStates,
+  generateDefaultState,
+  generateHoverState,
+  generateActiveState,
+  generateFocusState,
+  generateDisabledState,
+  generateLoadingState,
+  generateErrorState,
+  adjustColorBrightness,
+  calculateContrastRatio,
+} from './state-generator.js';
+
+export {
+  generateA11yBaseline,
+} from './a11y-generator.js';
+
+export {
+  buildEvidenceChain,
+  calculateOverallConfidence,
+  mergeEvidenceChains,
+  createTokenDecision,
+  createStructuralDecision,
+  createLLMDecision,
+} from './evidence-tracker.js';
+
+export {
+  synthesizeComponent,
+  mergeMotionIntoCSS,
+  mergeEdgeStatesIntoStates,
+} from './component-composer.js';

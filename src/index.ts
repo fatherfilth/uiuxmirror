@@ -30,3 +30,6 @@ export * from './normalization/index.js';
 export * from './components/index.js';
 export * from './scoring/index.js';
 export * from './output/index.js';
+
+// Phase 3: Synthesis and Inference Engine
+export * from './synthesis/index.js';
