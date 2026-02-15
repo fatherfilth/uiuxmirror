@@ -112,15 +112,13 @@ export type DesignToken =
 
 // Grouped tokens extracted from a single page
 export interface PageTokens {
-  pageUrl: string;
-  timestamp: string;
   colors: ColorToken[];
   typography: TypographyToken[];
   spacing: SpacingToken[];
   customProperties: CustomPropertyToken[];
-  radius: RadiusToken[];
+  radii: RadiusToken[];
   shadows: ShadowToken[];
-  zIndex: ZIndexToken[];
+  zIndexes: ZIndexToken[];
   motion: MotionToken[];
   icons: IconToken[];
   imagery: ImageryToken[];
