@@ -13,6 +13,7 @@ import { getAllVisibleElements } from './shared/index.js';
  * Captures transition durations, easing functions, and animation keyframes
  */
 export async function extractMotionTokens(page: Page, pageUrl: string): Promise<MotionToken[]> {
+  try {
   const elements = await getAllVisibleElements(page);
   const tokenMap = new Map<string, MotionToken>();
   const timestamp = new Date().toISOString();
@@ -170,6 +171,7 @@ export async function extractMotionTokens(page: Page, pageUrl: string): Promise<
   }
 
   return Array.from(tokenMap.values());
+  } catch (error) { return []; }
 }
 
 /**

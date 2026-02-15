@@ -16,6 +16,7 @@ import { getAllVisibleElements, parseSizeToPixels } from './shared/index.js';
  * Returns sorted by valuePixels ascending (reveals the radius scale)
  */
 export async function extractRadii(page: Page, pageUrl: string): Promise<RadiusToken[]> {
+  try {
   const elements = await getAllVisibleElements(page);
   const radiusMap = new Map<number, RadiusToken>();
   const timestamp = new Date().toISOString();
@@ -69,6 +70,7 @@ export async function extractRadii(page: Page, pageUrl: string): Promise<RadiusT
 
   // Return sorted by valuePixels ascending
   return Array.from(radiusMap.values()).sort((a, b) => a.valuePixels - b.valuePixels);
+  } catch (error) { return []; }
 }
 
 /**
@@ -76,6 +78,7 @@ export async function extractRadii(page: Page, pageUrl: string): Promise<RadiusT
  * Parses multi-layer shadows into structured components
  */
 export async function extractShadows(page: Page, pageUrl: string): Promise<ShadowToken[]> {
+  try {
   const elements = await getAllVisibleElements(page);
   const shadowMap = new Map<string, ShadowToken>();
   const timestamp = new Date().toISOString();
@@ -122,6 +125,7 @@ export async function extractShadows(page: Page, pageUrl: string): Promise<Shado
   }
 
   return Array.from(shadowMap.values());
+  } catch (error) { return []; }
 }
 
 /**
@@ -180,6 +184,7 @@ function parseShadowLayers(boxShadow: string): ShadowLayer[] {
  * Returns sorted by value ascending
  */
 export async function extractZIndexes(page: Page, pageUrl: string): Promise<ZIndexToken[]> {
+  try {
   const elements = await getAllVisibleElements(page);
   const zIndexMap = new Map<string, ZIndexToken>();
   const timestamp = new Date().toISOString();
@@ -244,4 +249,5 @@ export async function extractZIndexes(page: Page, pageUrl: string): Promise<ZInd
   }
 
   return tokens;
+  } catch (error) { return []; }
 }
