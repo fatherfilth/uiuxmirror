@@ -9,4 +9,18 @@ export type * from './types/index.js';
 // Export shared utilities
 export * from './shared/index.js';
 
-// Crawler, extractors, and evidence modules added in subsequent plans
+// Export crawler
+export * from './crawler/index.js';
+
+// Export extractors
+export * from './extractors/index.js';
+
+// Export evidence store
+export * from './evidence/index.js';
+
+// Export storage
+export * from './storage/index.js';
+
+// Export orchestrator
+export { runPipeline } from './orchestrator.js';
+export type { PipelineOptions, PipelineResult } from './orchestrator.js';
