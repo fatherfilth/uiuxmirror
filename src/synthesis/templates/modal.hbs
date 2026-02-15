@@ -1,0 +1,107 @@
+<div class="synth-modal-backdrop">
+  <div class="synth-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    {{#if header}}
+    <div class="synth-modal__header">
+      <h2 id="modal-title" class="synth-modal__title">
+        {{header}}
+      </h2>
+      <button class="synth-modal__close" aria-label="Close">
+        &times;
+      </button>
+    </div>
+    {{/if}}
+
+    <div class="synth-modal__body">
+      {{fallback body 'Modal content goes here'}}
+    </div>
+
+    {{#if actions}}
+    <div class="synth-modal__footer">
+      {{actions}}
+    </div>
+    {{/if}}
+  </div>
+</div>
+
+<style>
+.synth-modal-backdrop {
+  /* Backdrop overlay */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: {{fallback tokens.color.backdrop 'rgba(0, 0, 0, 0.5)'}};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: {{fallback tokens.spacing.lg '20px'}};
+}
+
+.synth-modal {
+  /* Modal container */
+  position: relative;
+  background-color: {{fallback tokens.color.background '#ffffff'}};
+  border-radius: {{fallback tokens.radius.lg '12px'}};
+  box-shadow: {{fallback tokens.shadow.lg '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'}};
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.synth-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: {{fallback tokens.spacing.lg '20px'}} {{fallback tokens.spacing.xl '24px'}};
+  border-bottom: 1px solid {{fallback tokens.color.border '#e5e7eb'}};
+}
+
+.synth-modal__title {
+  margin: 0;
+  font-size: {{fallback tokens.typography.heading.fontSize '20px'}};
+  font-weight: {{fallback tokens.typography.heading.fontWeight '600'}};
+  color: {{fallback tokens.color.text '#000000'}};
+}
+
+.synth-modal__close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  color: {{fallback tokens.color.textSecondary '#6b7280'}};
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: {{fallback tokens.radius.sm '4px'}};
+  transition: all 0.2s ease;
+}
+
+.synth-modal__close:hover {
+  background-color: {{fallback tokens.color.backgroundHover '#f3f4f6'}};
+  color: {{fallback tokens.color.text '#000000'}};
+}
+
+.synth-modal__body {
+  padding: {{fallback tokens.spacing.xl '24px'}};
+  color: {{fallback tokens.color.text '#000000'}};
+  overflow-y: auto;
+  flex: 1;
+}
+
+.synth-modal__footer {
+  display: flex;
+  gap: {{fallback tokens.spacing.md '12px'}};
+  justify-content: flex-end;
+  padding: {{fallback tokens.spacing.lg '20px'}} {{fallback tokens.spacing.xl '24px'}};
+  border-top: 1px solid {{fallback tokens.color.border '#e5e7eb'}};
+}
+</style>

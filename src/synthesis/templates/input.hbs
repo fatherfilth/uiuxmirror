@@ -1,0 +1,80 @@
+<div class="synth-input-wrapper">
+  {{#if label}}
+  <label class="synth-input__label" for="{{fallback id 'input'}}">
+    {{label}}
+  </label>
+  {{/if}}
+
+  <input
+    type="{{fallback type 'text'}}"
+    id="{{fallback id 'input'}}"
+    class="synth-input {{#if error}}synth-input--error{{/if}}"
+    placeholder="{{fallback placeholder ''}}"
+    {{#if required}}required{{/if}}
+    {{#if disabled}}disabled{{/if}}
+  />
+
+  {{#if error}}
+  <span class="synth-input__error">
+    {{error}}
+  </span>
+  {{/if}}
+</div>
+
+<style>
+.synth-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: {{fallback tokens.spacing.xs '4px'}};
+}
+
+.synth-input__label {
+  font-size: {{fallback tokens.typography.body.fontSize '14px'}};
+  font-weight: {{fallback tokens.typography.body.fontWeight '500'}};
+  color: {{fallback tokens.color.text '#000000'}};
+  margin-bottom: {{fallback tokens.spacing.xs '4px'}};
+}
+
+.synth-input {
+  /* Base structure */
+  width: 100%;
+  padding: {{fallback tokens.spacing.sm '8px'}} {{fallback tokens.spacing.md '12px'}};
+  font-size: {{fallback tokens.typography.body.fontSize '14px'}};
+  font-family: {{fallback tokens.typography.body.fontFamily 'system-ui, sans-serif'}};
+  color: {{fallback tokens.color.text '#000000'}};
+  background-color: {{fallback tokens.color.background '#ffffff'}};
+  border: 1px solid {{fallback tokens.color.border '#d1d5db'}};
+  border-radius: {{fallback tokens.radius.sm '4px'}};
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.synth-input:focus {
+  border-color: {{fallback tokens.color.primary '#3b82f6'}};
+  box-shadow: 0 0 0 3px {{fallback tokens.color.primaryLight 'rgba(59, 130, 246, 0.1)'}};
+}
+
+.synth-input:disabled {
+  background-color: {{fallback tokens.color.backgroundDisabled '#f3f4f6'}};
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.synth-input--error {
+  border-color: {{fallback tokens.color.error '#ef4444'}};
+}
+
+.synth-input--error:focus {
+  box-shadow: 0 0 0 3px {{fallback tokens.color.errorLight 'rgba(239, 68, 68, 0.1)'}};
+}
+
+.synth-input__error {
+  font-size: 12px;
+  color: {{fallback tokens.color.error '#ef4444'}};
+  margin-top: {{fallback tokens.spacing.xs '4px'}};
+}
+
+.synth-input::placeholder {
+  color: {{fallback tokens.color.textSecondary '#9ca3af'}};
+}
+</style>

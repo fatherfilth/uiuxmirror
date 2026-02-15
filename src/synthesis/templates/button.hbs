@@ -1,0 +1,76 @@
+<button class="synth-button synth-button--{{fallback emphasis 'primary'}} synth-button--{{fallback size 'medium'}}">
+  {{fallback label 'Button'}}
+</button>
+
+<style>
+.synth-button {
+  /* Base structure */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  font-family: {{fallback tokens.typography.body.fontFamily 'system-ui, sans-serif'}};
+  font-size: {{fallback tokens.typography.body.fontSize '14px'}};
+  font-weight: {{fallback tokens.typography.body.fontWeight '400'}};
+  line-height: 1.5;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+/* Size variants */
+.synth-button--small {
+  padding: {{fallback tokens.spacing.xs '4px'}} {{fallback tokens.spacing.sm '8px'}};
+  border-radius: {{fallback tokens.radius.sm '4px'}};
+  font-size: 12px;
+}
+
+.synth-button--medium {
+  padding: {{fallback tokens.spacing.sm '8px'}} {{fallback tokens.spacing.md '16px'}};
+  border-radius: {{fallback tokens.radius.md '6px'}};
+}
+
+.synth-button--large {
+  padding: {{fallback tokens.spacing.md '16px'}} {{fallback tokens.spacing.lg '24px'}};
+  border-radius: {{fallback tokens.radius.md '6px'}};
+  font-size: 16px;
+}
+
+/* Emphasis variants */
+.synth-button--primary {
+  background-color: {{fallback tokens.color.primary '#3b82f6'}};
+  color: {{fallback tokens.color.onPrimary '#ffffff'}};
+  border: 1px solid {{fallback tokens.color.primary '#3b82f6'}};
+}
+
+.synth-button--primary:hover {
+  opacity: 0.9;
+}
+
+.synth-button--secondary {
+  background-color: transparent;
+  color: {{fallback tokens.color.text '#000000'}};
+  border: 1px solid {{fallback tokens.color.border '#d1d5db'}};
+}
+
+.synth-button--secondary:hover {
+  background-color: {{fallback tokens.color.backgroundHover '#f3f4f6'}};
+}
+
+.synth-button--ghost {
+  background-color: transparent;
+  color: {{fallback tokens.color.primary '#3b82f6'}};
+  border: 1px solid transparent;
+}
+
+.synth-button--ghost:hover {
+  background-color: {{fallback tokens.color.backgroundHover '#f3f4f6'}};
+}
+
+.synth-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+</style>

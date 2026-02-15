@@ -1,0 +1,101 @@
+<nav class="synth-nav">
+  <div class="synth-nav__container">
+    {{#if logo}}
+    <div class="synth-nav__logo">
+      {{logo}}
+    </div>
+    {{/if}}
+
+    <ul class="synth-nav__links">
+      {{#each links}}
+      <li class="synth-nav__item">
+        <a href="{{this.href}}" class="synth-nav__link {{#if this.active}}synth-nav__link--active{{/if}}">
+          {{this.label}}
+        </a>
+      </li>
+      {{/each}}
+    </ul>
+
+    {{#if actions}}
+    <div class="synth-nav__actions">
+      {{actions}}
+    </div>
+    {{/if}}
+  </div>
+</nav>
+
+<style>
+.synth-nav {
+  /* Base structure */
+  background-color: {{fallback tokens.color.background '#ffffff'}};
+  border-bottom: 1px solid {{fallback tokens.color.border '#e5e7eb'}};
+  padding: {{fallback tokens.spacing.md '16px'}} 0;
+}
+
+.synth-nav__container {
+  display: flex;
+  align-items: center;
+  gap: {{fallback tokens.spacing.lg '24px'}};
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 {{fallback tokens.spacing.lg '20px'}};
+}
+
+.synth-nav__logo {
+  font-weight: {{fallback tokens.typography.heading.fontWeight '600'}};
+  font-size: {{fallback tokens.typography.heading.fontSize '18px'}};
+  color: {{fallback tokens.color.text '#000000'}};
+}
+
+.synth-nav__links {
+  display: flex;
+  align-items: center;
+  gap: {{fallback tokens.spacing.md '16px'}};
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+}
+
+.synth-nav__item {
+  margin: 0;
+}
+
+.synth-nav__link {
+  display: block;
+  padding: {{fallback tokens.spacing.sm '8px'}} {{fallback tokens.spacing.md '12px'}};
+  font-size: {{fallback tokens.typography.body.fontSize '14px'}};
+  color: {{fallback tokens.color.text '#000000'}};
+  text-decoration: none;
+  border-radius: {{fallback tokens.radius.sm '4px'}};
+  transition: all 0.2s ease;
+}
+
+.synth-nav__link:hover {
+  background-color: {{fallback tokens.color.backgroundHover '#f3f4f6'}};
+}
+
+.synth-nav__link--active {
+  color: {{fallback tokens.color.primary '#3b82f6'}};
+  background-color: {{fallback tokens.color.primaryLight 'rgba(59, 130, 246, 0.1)'}};
+  font-weight: 500;
+}
+
+.synth-nav__actions {
+  display: flex;
+  align-items: center;
+  gap: {{fallback tokens.spacing.md '12px'}};
+}
+
+/* Responsive design hint */
+@media (max-width: 768px) {
+  .synth-nav__container {
+    flex-wrap: wrap;
+  }
+
+  .synth-nav__links {
+    flex-basis: 100%;
+    order: 3;
+  }
+}
+</style>

@@ -1,0 +1,73 @@
+<table class="synth-table">
+  <thead class="synth-table__header">
+    <tr>
+      {{#each columns}}
+      <th class="synth-table__cell synth-table__cell--header">
+        {{this}}
+      </th>
+      {{/each}}
+    </tr>
+  </thead>
+  <tbody class="synth-table__body">
+    {{#each rows}}
+    <tr class="synth-table__row">
+      {{#each this}}
+      <td class="synth-table__cell">
+        {{this}}
+      </td>
+      {{/each}}
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<style>
+.synth-table {
+  /* Base structure */
+  width: 100%;
+  border-collapse: collapse;
+  background-color: {{fallback tokens.color.background '#ffffff'}};
+  font-size: {{fallback tokens.typography.body.fontSize '14px'}};
+  font-family: {{fallback tokens.typography.body.fontFamily 'system-ui, sans-serif'}};
+}
+
+.synth-table__header {
+  border-bottom: 2px solid {{fallback tokens.color.border '#e5e7eb'}};
+}
+
+.synth-table__cell {
+  padding: {{fallback tokens.spacing.md '12px'}} {{fallback tokens.spacing.md '16px'}};
+  text-align: left;
+  color: {{fallback tokens.color.text '#000000'}};
+}
+
+.synth-table__cell--header {
+  font-weight: {{fallback tokens.typography.heading.fontWeight '600'}};
+  color: {{fallback tokens.color.text '#000000'}};
+  background-color: {{fallback tokens.color.backgroundSecondary '#f9fafb'}};
+}
+
+.synth-table__row {
+  border-bottom: 1px solid {{fallback tokens.color.border '#e5e7eb'}};
+  transition: background-color 0.2s ease;
+}
+
+.synth-table__row:hover {
+  background-color: {{fallback tokens.color.backgroundHover '#f3f4f6'}};
+}
+
+.synth-table__row:last-child {
+  border-bottom: none;
+}
+
+/* Responsive design hint */
+@media (max-width: 768px) {
+  .synth-table {
+    font-size: 12px;
+  }
+
+  .synth-table__cell {
+    padding: {{fallback tokens.spacing.sm '8px'}} {{fallback tokens.spacing.md '12px'}};
+  }
+}
+</style>

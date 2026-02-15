@@ -1,0 +1,49 @@
+<div class="synth-card">
+  {{#if header}}
+  <div class="synth-card__header">
+    {{header}}
+  </div>
+  {{/if}}
+
+  <div class="synth-card__body">
+    {{fallback body 'Card content goes here'}}
+  </div>
+
+  {{#if footer}}
+  <div class="synth-card__footer">
+    {{footer}}
+  </div>
+  {{/if}}
+</div>
+
+<style>
+.synth-card {
+  /* Base structure */
+  display: flex;
+  flex-direction: column;
+  background-color: {{fallback tokens.color.background '#ffffff'}};
+  border: 1px solid {{fallback tokens.color.border '#e5e7eb'}};
+  border-radius: {{fallback tokens.radius.md '8px'}};
+  box-shadow: {{fallback tokens.shadow.sm '0 1px 2px 0 rgba(0, 0, 0, 0.05)'}};
+  overflow: hidden;
+}
+
+.synth-card__header {
+  padding: {{fallback tokens.spacing.md '16px'}} {{fallback tokens.spacing.lg '20px'}};
+  border-bottom: 1px solid {{fallback tokens.color.border '#e5e7eb'}};
+  font-weight: {{fallback tokens.typography.heading.fontWeight '600'}};
+  color: {{fallback tokens.color.text '#000000'}};
+}
+
+.synth-card__body {
+  padding: {{fallback tokens.spacing.lg '20px'}};
+  color: {{fallback tokens.color.text '#000000'}};
+  flex: 1;
+}
+
+.synth-card__footer {
+  padding: {{fallback tokens.spacing.md '16px'}} {{fallback tokens.spacing.lg '20px'}};
+  border-top: 1px solid {{fallback tokens.color.border '#e5e7eb'}};
+  background-color: {{fallback tokens.color.backgroundSecondary '#f9fafb'}};
+}
+</style>
