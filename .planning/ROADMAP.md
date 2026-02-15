@@ -52,10 +52,15 @@ Plans:
   3. Common components (buttons, inputs, cards, nav, modals) are identified from DOM signatures with variant dimensions detected
   4. Interactive states (hover, active, focus, disabled, loading, error) are mapped per component
   5. Every token and component has confidence score based on evidence count and cross-page frequency
-**Plans**: TBD
+**Plans:** 6 plans
 
 Plans:
-- [ ] TBD during planning
+- [ ] 02-01-PLAN.md — Token normalization: CIEDE2000 color deduplication and unit conversion (TDD)
+- [ ] 02-02-PLAN.md — Cross-page validation, spacing scale detection, and confidence scoring (TDD)
+- [ ] 02-03-PLAN.md — W3C DTCG output formatting and normalization pipeline
+- [ ] 02-04-PLAN.md — Component detection from DOM signatures (buttons, inputs, cards, nav, modals)
+- [ ] 02-05-PLAN.md — Component variant analysis and interactive state mapping
+- [ ] 02-06-PLAN.md — Component scoring, cross-page aggregation, and integration tests
 
 ### Phase 3: Synthesis & Inference Engine
 **Goal**: Unknown components can be synthesized using extracted design DNA as constraints
@@ -124,7 +129,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & Crawling Infrastructure | 7/7 | Complete | 2026-02-15 |
-| 2. Normalization & Component Mining | 0/TBD | Not started | - |
+| 2. Normalization & Component Mining | 0/6 | Not started | - |
 | 3. Synthesis & Inference Engine | 0/TBD | Not started | - |
 | 4. Pattern Detection & Content Analysis | 0/TBD | Not started | - |
 | 5. Export & Reporting | 0/TBD | Not started | - |
@@ -132,4 +137,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 ---
 *Roadmap created: 2026-02-15*
-*Last updated: 2026-02-15 — Phase 1 complete*
+*Last updated: 2026-02-15 — Phase 2 planned (6 plans)*
