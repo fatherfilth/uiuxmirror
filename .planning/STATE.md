@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-02-15)
 ## Current Position
 
 Phase: 1 of 6 (Foundation & Crawling Infrastructure)
-Plan: 5 of 7 in current phase
+Plan: 6 of 7 in current phase
 Status: Executing Phase 1
-Last activity: 2026-02-15 — Completed 01-05: Remaining Token Extractors (Radii, Shadows, Z-Index, Motion, Icons, Imagery)
+Last activity: 2026-02-15 — Completed 01-06: End-to-End Pipeline Integration (crawl -> extract -> store -> diff with CLI)
 
-Progress: [█████░░░░░] 71% (5/7 Phase 1 plans)
+Progress: [█████░░░░░] 86% (6/7 Phase 1 plans)
 
 ## Performance Metrics
 
@@ -27,7 +27,7 @@ Progress: [█████░░░░░] 71% (5/7 Phase 1 plans)
 
 | Phase | Plans | Total     | Avg/Plan |
 |-------|-------|-----------|----------|
-| 1     | 5     | 27.6 min  | 5.5 min  |
+| 1     | 6     | 35.9 min  | 6.0 min  |
 
 **Recent Executions:**
 
@@ -38,10 +38,11 @@ Progress: [█████░░░░░] 71% (5/7 Phase 1 plans)
 | 01-03    | 6.4 min  | 2     | 3     |
 | 01-04    | 3.4 min  | 3     | 6     |
 | 01-05    | 5.8 min  | 3     | 7     |
+| 01-06    | 8.3 min  | 3     | 6     |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (5 min), 01-02 (7 min), 01-03 (6.4 min), 01-04 (3.4 min), 01-05 (5.8 min)
-- Trend: Steady - maintaining consistent velocity around 5.5 min/plan average
+- Last 5 plans: 01-02 (7 min), 01-03 (6.4 min), 01-04 (3.4 min), 01-05 (5.8 min), 01-06 (8.3 min)
+- Trend: Steady - maintaining consistent velocity around 6.0 min/plan average
 
 *Updated after each plan completion*
 
@@ -70,6 +71,11 @@ Recent decisions affecting current work:
 - **01-05:** Icon detection uses dual heuristics (src pattern + size <64px) to identify icons
 - **01-05:** Imagery aspect ratios normalized to common formats with 5% tolerance
 - **01-05:** extractAllTokens runs all extractors concurrently via Promise.all (safe, all read-only)
+- **01-06:** Default import for fs-extra instead of namespace import to fix ESM compatibility
+- **01-06:** Token hash includes token counts and representative samples (first 5 of each type)
+- **01-06:** Evidence sampling: 10 tokens per type, 1-2 evidence items per token to avoid overwhelming storage
+- **01-06:** CLI uses simple process.argv parsing instead of external framework for minimal dependencies
+- **01-06:** Added /storage/ to .gitignore for Crawlee cache (root level only, not src/storage/)
 
 ### Pending Todos
 
@@ -77,14 +83,14 @@ None yet.
 
 ### Blockers/Concerns
 
-None - all planned features in Phase 1 are on track.
+**Extractor `__name is not defined` error:** During 01-06 end-to-end testing, extractors failed with "ReferenceError: __name is not defined" in page.evaluate() context. This is likely a bundling issue with esbuild/tsx and how shared utility functions are compiled. Pipeline infrastructure works correctly (0 tokens extracted but all storage/snapshot/diff files created). This blocker must be resolved before Phase 2 cross-page analysis, as Phase 2 requires actual extracted tokens.
 
 ## Session Continuity
 
 Last session: 2026-02-15
-Stopped at: Completed 01-05: Remaining Token Extractors (Radii, Shadows, Z-Index, Motion, Icons, Imagery)
+Stopped at: Completed 01-06: End-to-End Pipeline Integration (crawl -> extract -> store -> diff with CLI)
 Resume file: None
 
 ---
 *State initialized: 2026-02-15*
-*Last updated: 2026-02-15T10:14:27Z*
+*Last updated: 2026-02-15T10:25:30Z*
