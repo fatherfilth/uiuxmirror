@@ -119,13 +119,57 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| (Populated during roadmap creation) | | |
+| CRAWL-01 | Phase 1 | Pending |
+| CRAWL-02 | Phase 1 | Pending |
+| CRAWL-03 | Phase 1 | Pending |
+| CRAWL-04 | Phase 1 | Pending |
+| CRAWL-05 | Phase 1 | Pending |
+| CRAWL-06 | Phase 1 | Pending |
+| TOKEN-01 | Phase 1 | Pending |
+| TOKEN-02 | Phase 1 | Pending |
+| TOKEN-03 | Phase 1 | Pending |
+| TOKEN-04 | Phase 1 | Pending |
+| TOKEN-05 | Phase 1 | Pending |
+| TOKEN-06 | Phase 1 | Pending |
+| TOKEN-07 | Phase 1 | Pending |
+| TOKEN-08 | Phase 1 | Pending |
+| NORM-03 | Phase 1 | Pending |
+| NORM-01 | Phase 2 | Pending |
+| NORM-02 | Phase 2 | Pending |
+| NORM-04 | Phase 2 | Pending |
+| NORM-05 | Phase 2 | Pending |
+| COMP-01 | Phase 2 | Pending |
+| COMP-02 | Phase 2 | Pending |
+| COMP-03 | Phase 2 | Pending |
+| COMP-04 | Phase 2 | Pending |
+| INFER-01 | Phase 3 | Pending |
+| INFER-02 | Phase 3 | Pending |
+| INFER-03 | Phase 3 | Pending |
+| INFER-04 | Phase 3 | Pending |
+| INFER-05 | Phase 3 | Pending |
+| PATT-01 | Phase 4 | Pending |
+| PATT-02 | Phase 4 | Pending |
+| EXPORT-01 | Phase 5 | Pending |
+| EXPORT-02 | Phase 5 | Pending |
+| EXPORT-03 | Phase 5 | Pending |
+| EXPORT-04 | Phase 5 | Pending |
+| EXPORT-05 | Phase 5 | Pending |
+| EXPORT-06 | Phase 5 | Pending |
+| EXPORT-07 | Phase 5 | Pending |
+| EXPORT-08 | Phase 5 | Pending |
+| CLI-01 | Phase 6 | Pending |
+| CLI-02 | Phase 6 | Pending |
+| CLI-03 | Phase 6 | Pending |
+| CLI-04 | Phase 6 | Pending |
+| CLI-05 | Phase 6 | Pending |
+| CLI-06 | Phase 6 | Pending |
+| CLI-07 | Phase 6 | Pending |
 
 **Coverage:**
 - v1 requirements: 37 total
-- Mapped to phases: 0
-- Unmapped: 37
+- Mapped to phases: 37
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-15*
-*Last updated: 2026-02-15 after initial definition*
+*Last updated: 2026-02-15 after roadmap creation*
