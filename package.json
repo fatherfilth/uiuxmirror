@@ -16,28 +16,35 @@
     "test": "vitest",
     "lint": "eslint src/"
   },
-  "keywords": ["design-tokens", "web-scraping", "component-extraction", "ui-analysis"],
+  "keywords": [
+    "design-tokens",
+    "web-scraping",
+    "component-extraction",
+    "ui-analysis"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "playwright": "^1.48.0",
-    "crawlee": "^3.11.6",
     "@crawlee/playwright": "^3.11.6",
+    "color": "^4.2.3",
+    "crawlee": "^3.11.6",
+    "culori": "^4.0.2",
+    "fs-extra": "^11.2.0",
+    "lowdb": "^7.0.1",
+    "playwright": "^1.48.0",
     "playwright-extra": "^4.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
     "robots-parser": "^3.0.1",
-    "lowdb": "^7.0.1",
-    "fs-extra": "^11.2.0",
-    "zod": "^3.23.8",
-    "color": "^4.2.3"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
-    "typescript": "^5.7.2",
-    "tsx": "^4.19.2",
-    "tsup": "^8.3.5",
-    "vitest": "^2.1.8",
-    "@types/node": "^22.10.2",
+    "@types/color": "^3.0.6",
+    "@types/culori": "^4.0.1",
     "@types/fs-extra": "^11.0.4",
-    "@types/color": "^3.0.6"
+    "@types/node": "^22.10.2",
+    "tsup": "^8.3.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
   }
 }
