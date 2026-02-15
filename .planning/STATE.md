@@ -10,24 +10,24 @@ See: .planning/PROJECT.md (updated 2026-02-15)
 ## Current Position
 
 Phase: 1 of 6 (Foundation & Crawling Infrastructure)
-Plan: 6 of 7 in current phase
-Status: Executing Phase 1
-Last activity: 2026-02-15 — Completed 01-06: End-to-End Pipeline Integration (crawl -> extract -> store -> diff with CLI)
+Plan: 7 of 7 in current phase
+Status: Phase 1 Complete
+Last activity: 2026-02-15 — Completed 01-07: Integration Tests & Pipeline Validation
 
-Progress: [█████░░░░░] 86% (6/7 Phase 1 plans)
+Progress: [██████████] 100% (7/7 Phase 1 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
-- Average duration: 5.6 minutes
-- Total execution time: 0.47 hours
+- Total plans completed: 7
+- Average duration: 7.4 minutes
+- Total execution time: 0.87 hours
 
 **By Phase:**
 
 | Phase | Plans | Total     | Avg/Plan |
 |-------|-------|-----------|----------|
-| 1     | 6     | 35.9 min  | 6.0 min  |
+| 1     | 7     | 51.9 min  | 7.4 min  |
 
 **Recent Executions:**
 
@@ -39,10 +39,11 @@ Progress: [█████░░░░░] 86% (6/7 Phase 1 plans)
 | 01-04    | 3.4 min  | 3     | 6     |
 | 01-05    | 5.8 min  | 3     | 7     |
 | 01-06    | 8.3 min  | 3     | 6     |
+| 01-07    | 16 min   | 2     | 9     |
 
 **Recent Trend:**
-- Last 5 plans: 01-02 (7 min), 01-03 (6.4 min), 01-04 (3.4 min), 01-05 (5.8 min), 01-06 (8.3 min)
-- Trend: Steady - maintaining consistent velocity around 6.0 min/plan average
+- Last 5 plans: 01-03 (6.4 min), 01-04 (3.4 min), 01-05 (5.8 min), 01-06 (8.3 min), 01-07 (16 min)
+- Trend: Increasing - 01-07 took longer due to bug fix and verification
 
 *Updated after each plan completion*
 
@@ -76,6 +77,9 @@ Recent decisions affecting current work:
 - **01-06:** Evidence sampling: 10 tokens per type, 1-2 evidence items per token to avoid overwhelming storage
 - **01-06:** CLI uses simple process.argv parsing instead of external framework for minimal dependencies
 - **01-06:** Added /storage/ to .gitignore for Crawlee cache (root level only, not src/storage/)
+- **01-07:** Vitest chosen for test framework (fast, ESM-native, Playwright-compatible)
+- **01-07:** String-based page.evaluate() to avoid esbuild __name decorator injection
+- **01-07:** Try/catch guards added to all extractors for robustness
 
 ### Pending Todos
 
@@ -83,14 +87,14 @@ None yet.
 
 ### Blockers/Concerns
 
-**Extractor `__name is not defined` error:** During 01-06 end-to-end testing, extractors failed with "ReferenceError: __name is not defined" in page.evaluate() context. This is likely a bundling issue with esbuild/tsx and how shared utility functions are compiled. Pipeline infrastructure works correctly (0 tokens extracted but all storage/snapshot/diff files created). This blocker must be resolved before Phase 2 cross-page analysis, as Phase 2 requires actual extracted tokens.
+None - Phase 1 is complete and all blockers resolved.
 
 ## Session Continuity
 
 Last session: 2026-02-15
-Stopped at: Completed 01-06: End-to-End Pipeline Integration (crawl -> extract -> store -> diff with CLI)
+Stopped at: Completed 01-07: Integration Tests & Pipeline Validation - Phase 1 COMPLETE
 Resume file: None
 
 ---
 *State initialized: 2026-02-15*
-*Last updated: 2026-02-15T10:25:30Z*
+*Last updated: 2026-02-15T10:52:00Z*
