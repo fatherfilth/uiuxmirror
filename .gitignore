@@ -36,3 +36,6 @@ coverage/
 # Playwright
 playwright/.cache/
 test-results/
+
+# Crawlee storage (root level only)
+/storage/

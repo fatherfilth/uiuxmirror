@@ -3,8 +3,8 @@
  * Detects added, removed, changed, and unchanged pages across crawls
  */
 
-import * as fs from 'fs-extra';
-import * as path from 'path';
+import fs from 'fs-extra';
+import path from 'node:path';
 import crypto from 'crypto';
 import { createLogger } from '../shared/logger.js';
 import type { CrawlConfig, CrawlSnapshot, DiffResult } from '../types/crawl-config.js';

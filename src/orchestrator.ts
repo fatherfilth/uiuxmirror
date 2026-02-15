@@ -3,7 +3,7 @@
  * Wires together crawler -> extractors -> evidence -> storage
  */
 
-import * as path from 'path';
+import path from 'node:path';
 import crypto from 'crypto';
 import { runCrawl } from './crawler/index.js';
 import type { CrawlerHandlers } from './crawler/index.js';

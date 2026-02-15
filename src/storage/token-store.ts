@@ -3,8 +3,8 @@
  * Saves extracted tokens to JSON files for inspection and re-crawl comparison
  */
 
-import * as fs from 'fs-extra';
-import * as path from 'path';
+import fs from 'fs-extra';
+import path from 'node:path';
 import crypto from 'crypto';
 import { createLogger } from '../shared/logger.js';
 import type { PageTokens } from '../types/tokens.js';
