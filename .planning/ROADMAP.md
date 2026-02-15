@@ -73,10 +73,15 @@ Plans:
   4. Claude API handles nuanced design decisions (motion timing, edge state styling, microcopy tone)
   5. Every synthesized element includes confidence score and evidence citations linking back to source observations
   6. Generated components include complete state coverage and accessibility baseline (keyboard, focus, ARIA guidance)
-**Plans**: TBD
+**Plans:** 6 plans
 
 Plans:
-- [ ] TBD during planning
+- [ ] 03-01-PLAN.md — Synthesis types, dependency install, and constraint checker
+- [ ] 03-02-PLAN.md — Rule-based synthesis engine with Handlebars templates
+- [ ] 03-03-PLAN.md — LLM refiner with Claude structured outputs
+- [ ] 03-04-PLAN.md — State generator and accessibility baseline generator
+- [ ] 03-05-PLAN.md — Evidence tracker and component composer orchestrator
+- [ ] 03-06-PLAN.md — Unit tests and integration tests for synthesis pipeline
 
 ### Phase 4: Pattern Detection & Content Analysis
 **Goal**: Cross-page interaction patterns and content style rules are extracted
@@ -130,11 +135,11 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 |-------|----------------|--------|-----------|
 | 1. Foundation & Crawling Infrastructure | 7/7 | Complete | 2026-02-15 |
 | 2. Normalization & Component Mining | 6/6 | Complete | 2026-02-16 |
-| 3. Synthesis & Inference Engine | 0/TBD | Not started | - |
+| 3. Synthesis & Inference Engine | 0/6 | Not started | - |
 | 4. Pattern Detection & Content Analysis | 0/TBD | Not started | - |
 | 5. Export & Reporting | 0/TBD | Not started | - |
 | 6. CLI & MCP Integration | 0/TBD | Not started | - |
 
 ---
 *Roadmap created: 2026-02-15*
-*Last updated: 2026-02-16 — Phase 2 complete (6/6 plans, verified)*
+*Last updated: 2026-02-16 — Phase 3 planned (6 plans in 4 waves)*
