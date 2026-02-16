@@ -32,7 +32,7 @@ Progress: [██████░░░░] 60% (3/5 Phase 6 plans)
 | 3     | 6     | 27.0 min  | 4.5 min  |
 | 4     | 5     | 25.5 min  | 5.1 min  |
 | 5     | 6     | 20.6 min  | 3.4 min  |
-| 6     | 1     | 2.0 min   | 2.0 min  |
+| 6     | 3     | 14.0 min  | 4.7 min  |
 
 **Recent Executions:**
 
@@ -191,6 +191,10 @@ Recent decisions affecting current work:
 - [Phase 06-02]: Extract command skips component detection (requires live browser during crawl)
 - [Phase 06-02]: Pattern storage uses storeContentPattern API not individual save methods
 - [Phase 06-02]: Fixed pattern-store.ts to use default fs-extra import (ESM compatibility)
+- [Phase 06-03]: Report command loads from .uidna/ JSON files for consistency with extract output
+- [Phase 06-03]: Synth command writes HTML stub + JSON metadata for preview and debugging
+- [Phase 06-03]: Export command uses exportDesignDNA for "all" format, individual generators for specific formats
+- [Phase 06-03]: Fixed template-registry.ts: readFileSync from node:fs not fs-extra (ESM compatibility - Bug fix Rule 1)
 
 ### Pending Todos
 
