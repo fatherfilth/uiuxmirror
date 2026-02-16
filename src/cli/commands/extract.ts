@@ -153,6 +153,7 @@ export async function extractCommand(args: string[]): Promise<void> {
 
     let contentStyleResult = null;
     let flows: any[] = [];
+    let storedPatterns: StoredPattern[] = [];
 
     if (pageData.length > 0) {
       // Detect flows
@@ -163,7 +164,6 @@ export async function extractCommand(args: string[]): Promise<void> {
 
       // Save pattern results
       const patternStore = new PatternStore(outputDir);
-      const storedPatterns: StoredPattern[] = [];
 
       // Convert flows to stored patterns
       for (const flow of flows) {
@@ -201,6 +201,31 @@ export async function extractCommand(args: string[]): Promise<void> {
       spinner4.warn('No page metadata found - skipping pattern analysis');
     }
 
+    // Phase 5: Write standardized output files for downstream consumers
+    // Consumer commands (report, synth, export, MCP) read from outputDir root
+    const spinner5 = createSpinner('Writing standardized output files...').start();
+
+    // 1. tokens.json - NormalizationResult (already computed as normalizationResult)
+    await fs.writeJson(path.join(outputDir, 'tokens.json'), normalizationResult, { spaces: 2 });
+
+    // 2. components.json - empty array (component detection requires live browser, skipped in extract)
+    await fs.writeJson(path.join(outputDir, 'components.json'), [], { spaces: 2 });
+
+    // 3. patterns.json - StoredPattern[] (already computed as storedPatterns)
+    await fs.writeJson(path.join(outputDir, 'patterns.json'), storedPatterns, { spaces: 2 });
+
+    // 4. content_style.json - ContentStyleResult (already computed as contentStyleResult)
+    await fs.writeJson(path.join(outputDir, 'content_style.json'), contentStyleResult, { spaces: 2 });
+
+    // 5. evidence_index.json - load from evidence store if it exists
+    const evidenceSourcePath = path.join(outputDir, 'evidence', 'evidence-index.json');
+    const evidenceIndex = await fs.pathExists(evidenceSourcePath)
+      ? await fs.readJson(evidenceSourcePath)
+      : { entries: {}, byPage: {}, bySelector: {} };
+    await fs.writeJson(path.join(outputDir, 'evidence_index.json'), evidenceIndex, { spaces: 2 });
+
+    spinner5.succeed('Wrote standardized output files');
+
     // Print summary
     console.log('\n=== Extraction Complete ===');
     console.log('\nToken Summary (Normalized):');
@@ -224,6 +249,8 @@ export async function extractCommand(args: string[]): Promise<void> {
     console.log('\nOutput locations:');
     console.log(`  Normalized tokens: ${normalizedDir}`);
     console.log(`  Patterns: ${path.join(outputDir, 'patterns')}`);
+    console.log(`  Standardized JSON: ${outputDir}`);
+    console.log('    tokens.json, components.json, patterns.json, content_style.json, evidence_index.json');
     console.log('');
   } catch (error) {
     console.error('\nExtraction failed:', error instanceof Error ? error.message : String(error));
