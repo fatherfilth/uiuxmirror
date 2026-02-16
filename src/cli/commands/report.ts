@@ -66,7 +66,10 @@ export async function reportCommand(args: string[]): Promise<void> {
   }
 
   // Load config
-  const config = await loadFullConfig({ outputDir: parsed.outputDir });
+  const config = await loadFullConfig({
+    outputDir: parsed.outputDir,
+    seedUrls: ['http://example.com'], // Dummy value - not used for report
+  });
 
   // Verify extracted data exists
   const dataDir = config.outputDir || '.uidna';
@@ -119,31 +122,38 @@ export async function reportCommand(args: string[]): Promise<void> {
     }
   );
 
-  const contentStyleGuide = await withProgress(
-    'Generating Content Style Guide...',
-    async () => {
-      return generateContentStyleGuide({
-        contentResult: contentStyle,
-        metadata: {
-          sourceUrl: 'extracted',
-          crawlDate: new Date().toISOString(),
-        },
-      });
-    }
-  );
+  let contentStyleGuide = '';
+  if (contentStyle) {
+    contentStyleGuide = await withProgress(
+      'Generating Content Style Guide...',
+      async () => {
+        return generateContentStyleGuide({
+          contentResult: contentStyle,
+          metadata: {
+            sourceUrl: 'extracted',
+            crawlDate: new Date().toISOString(),
+          },
+        });
+      }
+    );
+  } else {
+    console.log('  Skipping Content Style Guide (no content data found)');
+  }
 
   // Write reports
   const brandDNAPath = join(outputDir, 'brand-dna-report.md');
   const contentStylePath = join(outputDir, 'content-style-guide.md');
 
   await outputFile(brandDNAPath, brandDNAReport, 'utf-8');
-  await outputFile(contentStylePath, contentStyleGuide, 'utf-8');
 
   // Print summary
   const brandDNASize = (brandDNAReport.length / 1024).toFixed(1);
-  const contentStyleSize = (contentStyleGuide.length / 1024).toFixed(1);
-
   console.log('\nReports generated successfully:');
   console.log(`  Brand DNA Report: ${brandDNAPath} (${brandDNASize} KB)`);
-  console.log(`  Content Style Guide: ${contentStylePath} (${contentStyleSize} KB)`);
+
+  if (contentStyleGuide) {
+    await outputFile(contentStylePath, contentStyleGuide, 'utf-8');
+    const contentStyleSize = (contentStyleGuide.length / 1024).toFixed(1);
+    console.log(`  Content Style Guide: ${contentStylePath} (${contentStyleSize} KB)`);
+  }
 }

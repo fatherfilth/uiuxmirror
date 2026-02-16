@@ -90,7 +90,10 @@ export async function synthCommand(args: string[]): Promise<void> {
   }
 
   // Load config
-  const config = await loadFullConfig({ outputDir: parsed.outputDir });
+  const config = await loadFullConfig({
+    outputDir: parsed.outputDir,
+    seedUrls: ['http://example.com'], // Dummy value - not used for synth
+  });
 
   // Verify extracted data exists
   const dataDir = config.outputDir || '.uidna';

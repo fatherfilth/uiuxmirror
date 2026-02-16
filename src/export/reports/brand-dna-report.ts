@@ -173,8 +173,9 @@ function generateColorTable(tokens: NormalizationResult): string {
       colorStandards.length
     );
     const value = result.token.canonical;
-    const occurrences = result.token.occurrences.toString();
-    const pageCount = result.pageUrls.size.toString();
+    const occurrences = (result.token.occurrences ?? 0).toString();
+    const pageUrls = result.pageUrls instanceof Set ? result.pageUrls : new Set(Object.keys(result.pageUrls || {}));
+    const pageCount = (pageUrls.size || result.occurrenceCount || 0).toString();
     const evidence = formatEvidenceCitation(result.token.evidence, 3);
 
     rows.push([name, value, occurrences, pageCount, evidence]);

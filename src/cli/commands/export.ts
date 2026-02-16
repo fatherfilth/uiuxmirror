@@ -115,7 +115,10 @@ export async function exportCommand(args: string[]): Promise<void> {
   }
 
   // Load config
-  const config = await loadFullConfig({ outputDir: parsed.outputDir });
+  const config = await loadFullConfig({
+    outputDir: parsed.outputDir,
+    seedUrls: ['http://example.com'], // Dummy value - not used for export
+  });
 
   // Verify extracted data exists
   const dataDir = config.outputDir || '.uidna';
