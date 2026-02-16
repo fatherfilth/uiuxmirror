@@ -61,10 +61,11 @@ async function main() {
         break;
       }
 
-      case 'mcp':
-        console.log(`Command '${command}' not yet implemented`);
-        process.exit(0);
+      case 'mcp': {
+        const { mcpCommand } = await import('./cli/commands/mcp.js');
+        await mcpCommand(process.argv.slice(3));
         break;
+      }
 
       case 'report': {
         const { reportCommand } = await import('./cli/commands/report.js');
