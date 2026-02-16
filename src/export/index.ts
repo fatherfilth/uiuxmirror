@@ -45,3 +45,10 @@ export {
   generateEvidenceIndexJSON,
   type DualLayerExport,
 } from './formatters/index.js';
+
+// Component stub generators
+export {
+  generateComponentStub,
+  generateAllStubs,
+  type TokenNameMap,
+} from './stubs/index.js';
