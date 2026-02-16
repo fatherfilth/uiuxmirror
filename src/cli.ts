@@ -49,12 +49,31 @@ async function main() {
 
     // Dispatch to subcommand handler
     switch (command) {
-      case 'crawl':
+      case 'crawl': {
+        const { crawlCommand } = await import('./cli/commands/crawl.js');
+        await crawlCommand(process.argv.slice(3));
+        break;
+      }
+
       case 'extract':
-      case 'report':
-      case 'synth':
-      case 'export':
       case 'mcp':
+        console.log(`Command '${command}' not yet implemented`);
+        process.exit(0);
+        break;
+
+      case 'report': {
+        const { reportCommand } = await import('./cli/commands/report.js');
+        await reportCommand(process.argv.slice(3));
+        break;
+      }
+
+      case 'synth': {
+        const { synthCommand } = await import('./cli/commands/synth.js');
+        await synthCommand(process.argv.slice(3));
+        break;
+      }
+
+      case 'export':
         console.log(`Command '${command}' not yet implemented`);
         process.exit(0);
         break;
