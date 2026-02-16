@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-15)
 ## Current Position
 
 Phase: 4 of 6 (Pattern Detection & Content Analysis)
-Plan: 3 of 5 in current phase
+Plan: 4 of 5 in current phase
 Status: In Progress
-Last activity: 2026-02-16 — Completed plan 04-03 (content analysis pipeline)
+Last activity: 2026-02-16 — Completed plan 04-04 (pattern storage and integration)
 
-Progress: [██████░░░░] 60% (3/5 Phase 4 plans)
+Progress: [████████░░] 80% (4/5 Phase 4 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 22
-- Average duration: 5.4 minutes
-- Total execution time: 2.01 hours
+- Total plans completed: 23
+- Average duration: 5.3 minutes
+- Total execution time: 2.08 hours
 
 **By Phase:**
 
@@ -30,22 +30,22 @@ Progress: [██████░░░░] 60% (3/5 Phase 4 plans)
 | 1     | 7     | 51.9 min  | 7.4 min  |
 | 2     | 6     | 42.8 min  | 7.1 min  |
 | 3     | 6     | 27.0 min  | 4.5 min  |
-| 4     | 3     | 10.5 min  | 3.5 min  |
+| 4     | 4     | 14.5 min  | 3.6 min  |
 
 **Recent Executions:**
 
 | Plan     | Duration | Tasks | Files |
 |----------|----------|-------|-------|
-| 03-04    | 4 min    | 2     | 3     |
 | 03-05    | 3 min    | 2     | 4     |
 | 03-06    | 5 min    | 2     | 7     |
 | 04-01    | 3 min    | 2     | 5     |
 | 04-02    | 3.5 min  | 2     | 4     |
 | 04-03    | 4 min    | 2     | 6     |
+| 04-04    | 4 min    | 2     | 4     |
 
 **Recent Trend:**
-- Last 6 plans: 03-04 (4 min), 03-05 (3 min), 03-06 (5 min), 04-01 (3 min), 04-02 (3.5 min), 04-03 (4 min)
-- Trend: Consistent fast execution, Phase 4 averaging 3.5 min/plan
+- Last 6 plans: 03-05 (3 min), 03-06 (5 min), 04-01 (3 min), 04-02 (3.5 min), 04-03 (4 min), 04-04 (4 min)
+- Trend: Consistent fast execution, Phase 4 averaging 3.6 min/plan
 
 *Updated after each plan completion*
 
@@ -150,6 +150,10 @@ Recent decisions affecting current work:
 - **04-03:** Error message classification by structure+tone clusters (prefix-reason, reason-suggestion, apologetic, technical, etc.)
 - **04-03:** CTA hierarchy classification by visual characteristics (solid background + bold = primary, border only = secondary)
 - **04-03:** Array.from() around Map.entries() for TypeScript iterator compatibility in strict mode
+- **04-04:** Cross-page threshold at 3 pages with 50% confidence reduction for patterns below threshold
+- **04-04:** Pattern storage grouped by type into separate JSON files (flows, voice-tone, capitalization, etc.)
+- **04-04:** Deterministic pattern IDs from SHA-256 hash of type + characteristics
+- **04-04:** Content analysis weighted confidence: voice (30%) + capitalization (30%) + CTA (25%) + errors (15%)
 
 ### Pending Todos
 
@@ -162,7 +166,7 @@ None - Phase 3 complete, all blockers resolved.
 ## Session Continuity
 
 Last session: 2026-02-16
-Stopped at: Completed plan 04-03 (content analysis pipeline)
+Stopped at: Completed plan 04-04 (pattern storage and integration)
 Resume file: None
 
 ---
