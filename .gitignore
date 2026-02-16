@@ -5,7 +5,7 @@ node_modules/
 dist/
 
 # UIUX-Mirror data directory
-.uidna/
+.uidna*/
 
 # TypeScript
 *.tsbuildinfo
