@@ -27,6 +27,7 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.74.0",
     "@crawlee/playwright": "^3.11.6",
+    "@modelcontextprotocol/sdk": "^1.26.0",
     "color": "^4.2.3",
     "compromise": "^14.14.5",
     "crawlee": "^3.11.6",
