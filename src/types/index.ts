@@ -52,3 +52,33 @@ export type {
   SynthesizedComponent,
   TokenConstraintResult,
 } from './synthesis.js';
+
+// Pattern detection types
+export type {
+  PageState,
+  TransitionAction,
+  Transition,
+  FlowType,
+  FlowCharacteristics,
+  DetectedFlow,
+  StoredPattern,
+} from './patterns.js';
+
+// Content and style analysis types
+export type {
+  TextContext,
+  TextSample,
+  CapitalizationStyle,
+  CapitalizationPattern,
+  ToneType,
+  TenseType,
+  PerspectiveType,
+  VoicePattern,
+  CTALevel,
+  CTACharacteristics,
+  CTAHierarchy,
+  ErrorStructure,
+  ErrorTone,
+  ErrorMessagePattern,
+  ContentStyleResult,
+} from './content-style.js';
