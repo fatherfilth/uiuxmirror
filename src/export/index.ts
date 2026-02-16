@@ -60,3 +60,11 @@ export {
   type BrandDNAReportParams,
   type ContentStyleGuideParams,
 } from './reports/index.js';
+
+// Export orchestrator - top-level export function
+export {
+  exportDesignDNA,
+  generateExportSummary,
+  type ExportInput,
+  type ExportResult,
+} from './export-orchestrator.js';

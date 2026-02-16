@@ -37,3 +37,6 @@ export * from './synthesis/index.js';
 // Phase 4: Pattern Detection & Content Analysis
 export * from './patterns/index.js';
 export * from './content/index.js';
+
+// Phase 5: Export & Reporting
+export * from './export/index.js';
