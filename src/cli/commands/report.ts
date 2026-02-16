@@ -16,6 +16,23 @@ import type { StoredPattern } from '../../types/patterns.js';
 import type { ContentStyleResult } from '../../types/content-style.js';
 
 /**
+ * Extract a source URL from tokens data (first color standard's evidence pageUrl origin).
+ * Falls back to 'extracted' if unavailable.
+ */
+function extractSourceUrl(tokens: NormalizationResult): string {
+  try {
+    const firstEvidence = (tokens.colors?.standards?.[0]?.token as any)?.evidence?.[0];
+    if (firstEvidence?.pageUrl) {
+      const parsed = new URL(firstEvidence.pageUrl);
+      return parsed.origin;
+    }
+  } catch {
+    // Fall through to default
+  }
+  return 'extracted';
+}
+
+/**
  * Print report help message
  */
 function printReportHelp() {
@@ -114,9 +131,9 @@ export async function reportCommand(args: string[]): Promise<void> {
         components,
         patterns,
         metadata: {
-          sourceUrl: 'extracted',
+          sourceUrl: extractSourceUrl(tokens),
           crawlDate: new Date().toISOString(),
-          totalPages: 1, // TODO: Get from actual metadata
+          totalPages: tokens.metadata?.totalPages || 1,
         },
       });
     }
@@ -130,7 +147,7 @@ export async function reportCommand(args: string[]): Promise<void> {
         return generateContentStyleGuide({
           contentResult: contentStyle,
           metadata: {
-            sourceUrl: 'extracted',
+            sourceUrl: extractSourceUrl(tokens),
             crawlDate: new Date().toISOString(),
           },
         });

@@ -22,6 +22,7 @@ import {
   generatePatternsJSON,
   generateContentStyleJSON,
   generateEvidenceIndexJSON,
+  generateSkillMD,
 } from './formatters/index.js';
 import { generateAllStubs } from './stubs/index.js';
 import { generateBrandDNAReport, generateContentStyleGuide } from './reports/index.js';
@@ -119,6 +120,15 @@ export async function exportDesignDNA(
     },
   });
   files.set('content-style-guide.md', contentStyleGuide);
+
+  // Generate SKILL.md
+  const skillMD = generateSkillMD({
+    tokens: input.tokens,
+    components: input.components,
+    contentStyle: input.contentStyle,
+    metadata: input.metadata,
+  });
+  files.set('SKILL.md', skillMD);
 
   // Write all files to disk if outputDir provided
   if (outputDir) {

@@ -23,6 +23,7 @@ import {
   generatePatternsJSON,
   generateContentStyleJSON,
   generateEvidenceIndexJSON,
+  generateSkillMD,
 } from '../../export/formatters/index.js';
 import type { NormalizationResult } from '../../normalization/normalize-pipeline.js';
 import type { AggregatedComponent } from '../../components/component-aggregator.js';
@@ -31,9 +32,26 @@ import type { ContentStyleResult } from '../../types/content-style.js';
 import type { EvidenceIndex } from '../../types/evidence.js';
 
 /**
+ * Extract a source URL from tokens data (first color standard's evidence pageUrl origin).
+ * Falls back to 'extracted' if unavailable.
+ */
+function extractSourceUrl(tokens: NormalizationResult): string {
+  try {
+    const firstEvidence = (tokens.colors?.standards?.[0]?.token as any)?.evidence?.[0];
+    if (firstEvidence?.pageUrl) {
+      const parsed = new URL(firstEvidence.pageUrl);
+      return parsed.origin;
+    }
+  } catch {
+    // Fall through to default
+  }
+  return 'extracted';
+}
+
+/**
  * Valid export formats
  */
-const VALID_FORMATS = ['tokens', 'figma', 'tailwind', 'cssvars', 'json', 'all'] as const;
+const VALID_FORMATS = ['tokens', 'figma', 'tailwind', 'cssvars', 'json', 'skill', 'all'] as const;
 type ExportFormat = typeof VALID_FORMATS[number];
 
 /**
@@ -46,7 +64,7 @@ Usage: uidna export [options]
 Export design tokens in various formats.
 
 Options:
-  --format <fmt>      Export format (repeatable): tokens, figma, tailwind, cssvars, json, all
+  --format <fmt>      Export format (repeatable): tokens, figma, tailwind, cssvars, json, skill, all
                       Default: all
   --output-dir <dir>  Output directory (default: .uidna/exports)
   --help, -h          Show this help message
@@ -168,9 +186,9 @@ export async function exportCommand(args: string[]): Promise<void> {
       contentStyle,
       evidenceIndex,
       metadata: {
-        sourceUrl: 'extracted',
+        sourceUrl: extractSourceUrl(tokens),
         crawlDate: new Date().toISOString(),
-        totalPages: 1, // TODO: Get from actual metadata
+        totalPages: tokens.metadata?.totalPages || 1,
       },
     };
 
@@ -217,6 +235,26 @@ export async function exportCommand(args: string[]): Promise<void> {
           await ensureDir(join(outputDir, 'formats'));
           await outputFile(figmaPath, figmaTokens, 'utf-8');
           generatedFiles.push(figmaPath);
+        });
+        break;
+      }
+
+      case 'skill': {
+        await withProgress('Generating SKILL.md...', async () => {
+          const sourceUrl = extractSourceUrl(tokens);
+          const skillMD = generateSkillMD({
+            tokens,
+            components,
+            contentStyle,
+            metadata: {
+              sourceUrl,
+              crawlDate: new Date().toISOString(),
+              totalPages: tokens.metadata?.totalPages || 1,
+            },
+          });
+          const skillPath = join(outputDir, 'SKILL.md');
+          await outputFile(skillPath, skillMD, 'utf-8');
+          generatedFiles.push(skillPath);
         });
         break;
       }
