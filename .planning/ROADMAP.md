@@ -91,10 +91,14 @@ Plans:
   1. Multi-page interaction flows (auth, checkout, onboarding, search/filter) are detected and documented
   2. Content standards are extracted (voice/tone, CTA hierarchy, capitalization rules, error message grammar)
   3. Pattern detection identifies state transitions and flow dependencies across pages
-**Plans**: TBD
+**Plans:** 5 plans
 
 Plans:
-- [ ] TBD during planning
+- [ ] 04-01-PLAN.md — Install dependencies and define pattern/content-style type systems
+- [ ] 04-02-PLAN.md — Flow detection: state graph builder, classifier, and detector
+- [ ] 04-03-PLAN.md — Content analysis: text extractor, voice, capitalization, grammar, CTA hierarchy
+- [ ] 04-04-PLAN.md — Pattern storage with evidence linking and barrel export integration
+- [ ] 04-05-PLAN.md — Unit tests for flow detection and content analysis
 
 ### Phase 5: Export & Reporting
 **Goal**: Design DNA is packaged in human-readable and machine-readable formats
