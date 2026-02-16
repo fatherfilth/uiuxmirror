@@ -33,3 +33,7 @@ export * from './output/index.js';
 
 // Phase 3: Synthesis and Inference Engine
 export * from './synthesis/index.js';
+
+// Phase 4: Pattern Detection & Content Analysis
+export * from './patterns/index.js';
+export * from './content/index.js';
