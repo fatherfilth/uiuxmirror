@@ -55,7 +55,12 @@ async function main() {
         break;
       }
 
-      case 'extract':
+      case 'extract': {
+        const { extractCommand } = await import('./cli/commands/extract.js');
+        await extractCommand(process.argv.slice(3));
+        break;
+      }
+
       case 'mcp':
         console.log(`Command '${command}' not yet implemented`);
         process.exit(0);

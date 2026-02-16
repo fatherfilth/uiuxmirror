@@ -4,9 +4,9 @@
  */
 
 import Handlebars from 'handlebars';
-import { readFileSync } from 'fs-extra';
-import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { readFileSync } from 'node:fs';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 // Compiled template cache to avoid re-compilation
 const templateCache = new Map<string, HandlebarsTemplateDelegate>();
