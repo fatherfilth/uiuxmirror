@@ -4,7 +4,7 @@
  */
 
 import { createHash } from 'crypto';
-import { ensureDir, writeJSON, readJSON, pathExists } from 'fs-extra';
+import fs from 'fs-extra';
 import { join } from 'path';
 import type {
   DetectedFlow,
@@ -146,7 +146,7 @@ export class PatternStore {
    * Persist patterns to JSON files, grouped by type
    */
   async savePatterns(patterns: StoredPattern[]): Promise<void> {
-    await ensureDir(this.patternsDir);
+    await fs.ensureDir(this.patternsDir);
 
     // Group patterns by type
     const grouped = new Map<StoredPattern['type'], StoredPattern[]>();
@@ -169,7 +169,7 @@ export class PatternStore {
     for (const [type, typePatterns] of Array.from(grouped.entries())) {
       const filename = fileMap[type];
       const filepath = join(this.patternsDir, filename);
-      await writeJSON(filepath, typePatterns, { spaces: 2 });
+      await fs.writeJSON(filepath, typePatterns, { spaces: 2 });
       logger.info(`Saved ${typePatterns.length} ${type} patterns to ${filename}`);
     }
   }
@@ -189,18 +189,18 @@ export class PatternStore {
     if (type) {
       // Load specific type
       const filepath = join(this.patternsDir, fileMap[type]);
-      if (!(await pathExists(filepath))) {
+      if (!(await fs.pathExists(filepath))) {
         return [];
       }
-      return await readJSON(filepath);
+      return await fs.readJSON(filepath);
     }
 
     // Load all types
     const allPatterns: StoredPattern[] = [];
     for (const filename of Object.values(fileMap)) {
       const filepath = join(this.patternsDir, filename);
-      if (await pathExists(filepath)) {
-        const patterns = await readJSON(filepath);
+      if (await fs.pathExists(filepath)) {
+        const patterns = await fs.readJSON(filepath);
         allPatterns.push(...patterns);
       }
     }
