@@ -10,6 +10,8 @@
 import type { NormalizationResult } from '../../normalization/normalize-pipeline.js';
 import type { AggregatedComponent } from '../../components/component-aggregator.js';
 import type { EvidenceIndex } from '../../types/evidence.js';
+import type { StoredPattern } from '../../types/patterns.js';
+import type { ContentStyleResult } from '../../types/content-style.js';
 import { formatEvidenceForJSON, formatEvidenceSummary } from '../evidence-linker.js';
 import {
   generateSemanticColorName,
@@ -233,10 +235,10 @@ export function generateTokensJSON(
   });
 
   // Motion (durations and easings from standards array)
-  const durations = result.motion.standards.filter(cp => cp.token.property === 'duration');
-  const easings = result.motion.standards.filter(cp => cp.token.property === 'easing');
+  const durations = result.motion.standards.filter((cp: any) => cp.token.property === 'duration');
+  const easings = result.motion.standards.filter((cp: any) => cp.token.property === 'easing');
 
-  durations.forEach((crossPageToken, index) => {
+  durations.forEach((crossPageToken: any, index: number) => {
     const token = crossPageToken.token;
     const name = generateMotionName({ property: 'duration' }, index);
     quick[name] = token.value;
@@ -255,7 +257,7 @@ export function generateTokensJSON(
     };
   });
 
-  easings.forEach((crossPageToken, index) => {
+  easings.forEach((crossPageToken: any, index: number) => {
     const token = crossPageToken.token;
     const name = generateMotionName({ property: 'easing' }, index);
     quick[name] = token.value;

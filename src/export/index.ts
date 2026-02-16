@@ -32,3 +32,10 @@ export {
   link,
   section,
 } from './reports/markdown-utils.js';
+
+// Format generators
+export {
+  generateCSSCustomProperties,
+  generateTailwindConfig,
+  generateFigmaTokens,
+} from './formatters/index.js';
