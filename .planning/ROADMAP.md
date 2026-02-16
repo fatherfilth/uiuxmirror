@@ -110,10 +110,15 @@ Plans:
   3. Framework-agnostic component stubs (vanilla HTML/CSS) are generated for all observed and synthesized components
   4. Export supports multiple formats (CSS variables, Tailwind config, Figma tokens plugin format)
   5. All exports maintain evidence traceability (links back to source observations)
-**Plans**: TBD
+**Plans:** 6 plans
 
 Plans:
-- [ ] TBD during planning
+- [ ] 05-01-PLAN.md — Shared export utilities (evidence linker, semantic namer, markdown helpers)
+- [ ] 05-02-PLAN.md — Dual-layer JSON exports (tokens, components, patterns, content style, evidence index)
+- [ ] 05-03-PLAN.md — Multi-format exporters (CSS custom properties, Tailwind config, Figma tokens)
+- [ ] 05-04-PLAN.md — Component stubs (self-contained HTML/CSS with CSS var references)
+- [ ] 05-05-PLAN.md — Reports (Brand DNA Report + Content Style Guide)
+- [ ] 05-06-PLAN.md — Export orchestrator, barrel integration, and unit tests
 
 ### Phase 6: CLI & MCP Integration
 **Goal**: Complete user interface enables both human CLI usage and AI agent queries
@@ -141,7 +146,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 2. Normalization & Component Mining | 6/6 | Complete | 2026-02-16 |
 | 3. Synthesis & Inference Engine | 6/6 | Complete | 2026-02-16 |
 | 4. Pattern Detection & Content Analysis | 5/5 | Complete | 2026-02-16 |
-| 5. Export & Reporting | 0/TBD | Not started | - |
+| 5. Export & Reporting | 0/6 | Not started | - |
 | 6. CLI & MCP Integration | 0/TBD | Not started | - |
 
 ---
