@@ -12,7 +12,7 @@ See: .planning/PROJECT.md (updated 2026-02-15)
 Phase: 6 of 6 (CLI & MCP Integration)
 Plan: 5 of 5 in current phase
 Status: Complete
-Last activity: 2026-02-16 — Completed plan 06-05 (CLI and MCP unit tests)
+Last activity: 2026-02-16 - Completed quick task 1: fix the extract command output file mismatch
 
 Progress: [██████████] 100% (5/5 Phase 6 plans)
 
@@ -209,6 +209,12 @@ None yet.
 ### Blockers/Concerns
 
 None - Phase 4 complete, all blockers resolved.
+
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 1 | fix the extract command output file mismatch | 2026-02-16 | 8b698cf | [1-fix-the-extract-command-output-file-mism](./quick/1-fix-the-extract-command-output-file-mism/) |
 
 ## Session Continuity
 
