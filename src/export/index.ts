@@ -43,6 +43,7 @@ export {
   generatePatternsJSON,
   generateContentStyleJSON,
   generateEvidenceIndexJSON,
+  generateSkillMD,
   type DualLayerExport,
 } from './formatters/index.js';
 
