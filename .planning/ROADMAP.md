@@ -130,10 +130,14 @@ Plans:
   3. Configuration is managed via `uidna.config.json` (depth, limits, allowlist/denylist, strict robots, viewport sizes)
   4. MCP server mode exposes design DNA as queryable tools and resources for AI agents
   5. All commands provide clear progress feedback and error messages
-**Plans**: TBD
+**Plans:** 5 plans
 
 Plans:
-- [ ] TBD during planning
+- [ ] 06-01-PLAN.md — CLI foundation: config loader, subcommand router, progress utility
+- [ ] 06-02-PLAN.md — CLI commands: crawl and extract
+- [ ] 06-03-PLAN.md — CLI commands: report, synth, and export
+- [ ] 06-04-PLAN.md — MCP server with resources and tools
+- [ ] 06-05-PLAN.md — Unit tests for CLI and MCP
 
 ## Progress
 
@@ -147,7 +151,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 3. Synthesis & Inference Engine | 6/6 | Complete | 2026-02-16 |
 | 4. Pattern Detection & Content Analysis | 5/5 | Complete | 2026-02-16 |
 | 5. Export & Reporting | 6/6 | Complete | 2026-02-16 |
-| 6. CLI & MCP Integration | 0/TBD | Not started | - |
+| 6. CLI & MCP Integration | 0/5 | Not started | - |
 
 ---
 *Roadmap created: 2026-02-15*
