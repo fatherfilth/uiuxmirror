@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-15)
 ## Current Position
 
 Phase: 6 of 6 (CLI & MCP Integration)
-Plan: 3 of 5 in current phase
+Plan: 4 of 5 in current phase
 Status: In Progress
-Last activity: 2026-02-16 — Completed plan 06-03 (CLI output commands: report, synth, export)
+Last activity: 2026-02-16 — Completed plan 06-04 (MCP server implementation)
 
-Progress: [██████░░░░] 60% (3/5 Phase 6 plans)
+Progress: [████████░░] 80% (4/5 Phase 6 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 30
+- Total plans completed: 31
 - Average duration: 5.1 minutes
-- Total execution time: 2.65 hours
+- Total execution time: 2.78 hours
 
 **By Phase:**
 
@@ -32,13 +32,12 @@ Progress: [██████░░░░] 60% (3/5 Phase 6 plans)
 | 3     | 6     | 27.0 min  | 4.5 min  |
 | 4     | 5     | 25.5 min  | 5.1 min  |
 | 5     | 6     | 20.6 min  | 3.4 min  |
-| 6     | 3     | 14.0 min  | 4.7 min  |
+| 6     | 4     | 22.0 min  | 5.5 min  |
 
 **Recent Executions:**
 
 | Plan     | Duration | Tasks | Files |
 |----------|----------|-------|-------|
-| 04-03    | 4 min    | 2     | 6     |
 | 04-04    | 4 min    | 2     | 3     |
 | 04-05    | 11 min   | 2     | 4     |
 | 05-01    | 3 min    | 2     | 6     |
@@ -49,10 +48,11 @@ Progress: [██████░░░░] 60% (3/5 Phase 6 plans)
 | 05-06    | 6 min    | 2     | 4     |
 | 06-01    | 2 min    | 2     | 4     |
 | 06-02    | 6 min    | 2     | 4     |
+| 06-04    | 8 min    | 2     | 5     |
 
 **Recent Trend:**
-- Last 6 plans: 05-03 (3 min), 05-04 (2.6 min), 05-05 (3 min), 05-06 (6 min), 06-01 (2 min), 06-02 (6 min)
-- Trend: Phase 6 progressing with command implementations (avg 4 min)
+- Last 6 plans: 05-04 (2.6 min), 05-05 (3 min), 05-06 (6 min), 06-01 (2 min), 06-02 (6 min), 06-04 (8 min)
+- Trend: Phase 6 MCP integration slightly longer (complex SDK setup)
 
 ## Accumulated Context
 
@@ -195,6 +195,10 @@ Recent decisions affecting current work:
 - [Phase 06-03]: Synth command writes HTML stub + JSON metadata for preview and debugging
 - [Phase 06-03]: Export command uses exportDesignDNA for "all" format, individual generators for specific formats
 - [Phase 06-03]: Fixed template-registry.ts: readFileSync from node:fs not fs-extra (ESM compatibility - Bug fix Rule 1)
+- [Phase 06-04]: Use type assertions (as any) to work around TypeScript deep recursion with MCP SDK generics
+- [Phase 06-04]: Import zod from 'zod/v4' to match MCP SDK expectations
+- [Phase 06-04]: All MCP logging to stderr (console.error) to avoid corrupting stdio JSON-RPC
+- [Phase 06-04]: Use design-tokens:// URI scheme for MCP resource URIs
 
 ### Pending Todos
 
@@ -207,7 +211,7 @@ None - Phase 4 complete, all blockers resolved.
 ## Session Continuity
 
 Last session: 2026-02-16
-Stopped at: Completed 06-02-PLAN.md
+Stopped at: Completed 06-04-PLAN.md
 Resume file: None
 
 ---
