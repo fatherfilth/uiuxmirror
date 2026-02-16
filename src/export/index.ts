@@ -52,3 +52,11 @@ export {
   generateAllStubs,
   type TokenNameMap,
 } from './stubs/index.js';
+
+// Report generators
+export {
+  generateBrandDNAReport,
+  generateContentStyleGuide,
+  type BrandDNAReportParams,
+  type ContentStyleGuideParams,
+} from './reports/index.js';
