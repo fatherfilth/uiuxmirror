@@ -93,15 +93,30 @@ export function analyzeVoiceTone(samples: TextSample[]): VoicePattern[] {
  */
 function detectTense(doc: any): TenseType {
   const verbs = doc.verbs();
+  const verbData = verbs.json();
 
-  // Check for imperative (commands)
-  if (verbs.isImperative().found) {
-    return 'imperative';
+  // No verbs found - check if it's a command phrase
+  if (verbData.length === 0) {
+    // Short phrases without subject are often imperative (e.g., "Sign Up", "Buy Now")
+    const text = doc.text().toLowerCase();
+    if (text.split(/\s+/).length <= 3 && /^[a-z]+\s+(up|now|here|more|in|out)/i.test(doc.text())) {
+      return 'imperative';
+    }
+    return 'present';
   }
 
-  // Check for future tense
-  if (verbs.isFuture().found) {
-    return 'future';
+  // Check verb tense from grammar
+  for (const verb of verbData) {
+    const tense = verb.verb?.grammar?.tense;
+
+    if (tense === 'FutureTense' || verb.verb?.auxiliary === 'will') {
+      return 'future';
+    }
+
+    // Imperatives are often in base form without subject
+    if (verb.verb?.grammar?.form === 'simple-present' && !doc.has('#Pronoun')) {
+      return 'imperative';
+    }
   }
 
   // Default to present

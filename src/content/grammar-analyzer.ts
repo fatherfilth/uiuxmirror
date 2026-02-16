@@ -174,8 +174,22 @@ function hasPrefix(text: string): boolean {
 
 /**
  * Extract prefix from error message if present
+ * Includes the colon if present (e.g., "Error:" or "Warning:")
  */
 function extractPrefix(text: string): string | null {
-  const match = text.match(/^([a-z]+)\s*:?\s+/i);
-  return match ? match[1] : null;
+  const match = text.match(/^([a-z]+\s*:?)\s+/i);
+  if (!match) return null;
+
+  // Normalize: add colon if not present and followed by space
+  const prefix = match[1].trim();
+  if (prefix.endsWith(':')) {
+    return prefix;
+  }
+
+  // Check if original had a colon+space pattern
+  if (text.match(/^[a-z]+\s*:\s+/i)) {
+    return prefix + ':';
+  }
+
+  return prefix;
 }
