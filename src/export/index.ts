@@ -38,4 +38,10 @@ export {
   generateCSSCustomProperties,
   generateTailwindConfig,
   generateFigmaTokens,
+  generateTokensJSON,
+  generateComponentsJSON,
+  generatePatternsJSON,
+  generateContentStyleJSON,
+  generateEvidenceIndexJSON,
+  type DualLayerExport,
 } from './formatters/index.js';

@@ -400,3 +400,140 @@ export function generateEvidenceIndexJSON(evidenceIndex: EvidenceIndex): {
     },
   };
 }
+
+/**
+ * Rich pattern with full data
+ */
+interface RichPattern {
+  type: string;
+  pattern: any;
+  evidence: {
+    pageUrls: string[];
+    selectors: string[];
+    occurrenceCount: number;
+    crossPageCount: number;
+  };
+  confidence: number;
+  detectedAt: string;
+}
+
+/**
+ * Generate patterns.json with dual layers
+ * Quick: pattern ID -> summary
+ * Rich: Full pattern data with evidence
+ */
+export function generatePatternsJSON(
+  patterns: StoredPattern[]
+): DualLayerExport<
+  Record<string, { type: string; confidence: number; pageCount: number }>,
+  Record<string, RichPattern>
+> {
+  const quick: Record<string, { type: string; confidence: number; pageCount: number }> = {};
+  const rich: Record<string, RichPattern> = {};
+
+  patterns.forEach(pattern => {
+    const key = pattern.id;
+
+    // Quick layer: summary
+    quick[key] = {
+      type: pattern.type,
+      confidence: pattern.confidence,
+      pageCount: pattern.evidence.crossPageCount,
+    };
+
+    // Rich layer: full pattern data
+    rich[key] = {
+      type: pattern.type,
+      pattern: pattern.pattern,
+      evidence: {
+        pageUrls: pattern.evidence.pageUrls,
+        selectors: pattern.evidence.selectors,
+        occurrenceCount: pattern.evidence.occurrenceCount,
+        crossPageCount: pattern.evidence.crossPageCount,
+      },
+      confidence: pattern.confidence,
+      detectedAt: pattern.detectedAt,
+    };
+  });
+
+  return {
+    quick,
+    rich,
+    metadata: {
+      generatedAt: new Date().toISOString(),
+      version: '1.0.0',
+    },
+  };
+}
+
+/**
+ * Generate content_style.json with dual layers
+ * Quick: Highest-confidence pattern for each category (voice, capitalization, CTA, error)
+ * Rich: All patterns with full examples
+ */
+export function generateContentStyleJSON(
+  contentResult: ContentStyleResult
+): DualLayerExport<
+  {
+    voice: { tone: string; tense: string; perspective: string };
+    capitalization: Record<string, string>;
+    ctaLevels: string[];
+    errorStyle: { structure: string; tone: string };
+  },
+  {
+    voicePatterns: typeof contentResult.voicePatterns;
+    capitalizationPatterns: typeof contentResult.capitalizationPatterns;
+    ctaHierarchy: typeof contentResult.ctaHierarchy;
+    errorPatterns: typeof contentResult.errorPatterns;
+    totalSamples: number;
+    confidence: number;
+  }
+> {
+  // Quick layer: Highest-confidence summary
+  const quick = {
+    voice: {
+      tone: contentResult.voicePatterns[0]?.tone || 'unknown',
+      tense: contentResult.voicePatterns[0]?.tense || 'unknown',
+      perspective: contentResult.voicePatterns[0]?.perspective || 'unknown',
+    },
+    capitalization: {} as Record<string, string>,
+    ctaLevels: contentResult.ctaHierarchy.map(cta => cta.level),
+    errorStyle: {
+      structure: contentResult.errorPatterns[0]?.structure || 'unknown',
+      tone: contentResult.errorPatterns[0]?.tone || 'unknown',
+    },
+  };
+
+  // Build capitalization quick summary (context -> style mapping)
+  const capByContext = new Map<string, { style: string; confidence: number }>();
+  for (const cap of contentResult.capitalizationPatterns) {
+    for (const context of cap.contexts) {
+      const existing = capByContext.get(context);
+      if (!existing || cap.confidence > existing.confidence) {
+        capByContext.set(context, { style: cap.style, confidence: cap.confidence });
+      }
+    }
+  }
+  for (const [context, data] of capByContext) {
+    quick.capitalization[context] = data.style;
+  }
+
+  // Rich layer: All patterns with full data
+  const rich = {
+    voicePatterns: contentResult.voicePatterns,
+    capitalizationPatterns: contentResult.capitalizationPatterns,
+    ctaHierarchy: contentResult.ctaHierarchy,
+    errorPatterns: contentResult.errorPatterns,
+    totalSamples: contentResult.totalSamples,
+    confidence: contentResult.confidence,
+  };
+
+  return {
+    quick,
+    rich,
+    metadata: {
+      generatedAt: new Date().toISOString(),
+      version: '1.0.0',
+    },
+  };
+}
