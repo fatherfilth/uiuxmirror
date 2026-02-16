@@ -81,7 +81,7 @@ export function analyzeCapitalization(samples: TextSample[]): CapitalizationPatt
   // Analyze each context group
   const patterns: CapitalizationPattern[] = [];
 
-  for (const [context, contextSamples] of byContext.entries()) {
+  for (const [context, contextSamples] of Array.from(byContext.entries())) {
     // Require minimum 5 samples per context (per research guidance)
     if (contextSamples.length < 5) {
       continue;
@@ -107,7 +107,7 @@ export function analyzeCapitalization(samples: TextSample[]): CapitalizationPatt
     // Convert to CapitalizationPattern objects
     const totalInContext = contextSamples.length;
 
-    for (const [style, examples] of styleMap.entries()) {
+    for (const [style, examples] of Array.from(styleMap.entries())) {
       const frequency = examples.length;
       const confidence = frequency / totalInContext;
 

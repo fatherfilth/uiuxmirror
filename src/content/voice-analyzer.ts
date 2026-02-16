@@ -72,7 +72,7 @@ export function analyzeVoiceTone(samples: TextSample[]): VoicePattern[] {
   const totalSamples = analyzed.length;
   const patterns: VoicePattern[] = [];
 
-  for (const { pattern, count } of clusters.values()) {
+  for (const [_, { pattern, count }] of Array.from(clusters.entries())) {
     const confidence = count / totalSamples;
 
     // High confidence threshold requires at least 10 samples
