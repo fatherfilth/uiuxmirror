@@ -78,10 +78,11 @@ async function main() {
         break;
       }
 
-      case 'export':
-        console.log(`Command '${command}' not yet implemented`);
-        process.exit(0);
+      case 'export': {
+        const { exportCommand } = await import('./cli/commands/export.js');
+        await exportCommand(process.argv.slice(3));
         break;
+      }
 
       default:
         console.error(`Error: Unknown command '${command}'\n`);
